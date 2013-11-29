@@ -30,3 +30,6 @@ results
 build
 
 node_modules
+
+# Repository Specific
+supportopen/fetch/responses-*
