@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+
+	<!-- 
+		This make is part of a survey!
+		Please don't remove/change this metadata if you want your feedback to count.
+	-->
+	<meta content="playtest" name="webmaker:tags">
+	<meta content="mentor-survey" name="webmaker:tags">
+	<meta content="make-based-survey-b" name="webmaker:tags">
+	<meta content="http://dl.dropboxusercontent.com/u/7467121/monkeys-at-work.jpg" name="webmaker:thumbnail">
+
+	<!-- name our make -->
+	<title>The interview</title>
+
+	<!-- lets get a nice font from the Google Webfonts (http://www.google.com/fonts/) -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700">
+
+	<!-- 
+		There's a lot of beautification code here, feel free to tinker 
+		tweak and change it up :D
+	-->
+	<style>
+	* {
+		margin:0;
+		padding:0
+	}
+	body {
+		font:14px/1.4 "Open Sans", Helvetica, Arial, Sans-Serif;
+		background:#E3EAEE;
+		color:#4D4E53;
+		max-width: 50em;
+		position:relative;
+		margin:3em auto;
+	}
+	.qa-container, #intro {
+		background:inherit;
+		max-width: 42em;
+		margin: 2em 5em 2em 2.75em;
+	}
+	.speech, .interviewer {
+		background:#fff;
+		position:relative;
+		margin:1em auto;
+		padding:1em
+	}
+
+	/* This section styles what "mozteach" say */
+	.speech:nth-child(odd) {
+		font-size: 0.9em;
+	}
+	.speech:nth-child(odd)::before, .interviewer::before {
+		content:"";
+		position:absolute;
+		bottom:1em;
+		left:-0.9em;
+		width:0;
+		height:0;
+		border-top:1em solid transparent;
+		border-bottom:1em solid transparent;
+		border-right:1em solid #fff;
+	}
+	.speech:nth-child(odd)::after, .interviewer::after {
+		content:"";
+		position:absolute;
+		bottom:0;
+		left:-5em;
+		width:3em;
+		height:3em;
+		background:#fff url(https://secure.gravatar.com/avatar/bf8989e824a53fe30cb60e7bc3a57fdc?s=44&d=https%3A%2F%2Fstuff.webmaker.org%2Favatars%2Fwebmaker-avatar-44x44.png);
+		background-size:cover;
+		border-radius:100%;
+		border:4px solid #fff
+	}
+	.speech:nth-child(odd) p::before {
+		content: "mozteach:";
+		font-size: 1.1em;
+		font-weight: 700;
+		display: block;
+	}
+	.interviewer::before, .interviewer::after {
+		font-size: 0.9em;
+	}
+
+	/* This section deals with what you say */
+	.speech:nth-child(even) {
+		text-align:right;
+		padding: 2em;
+	}
+	.speech:nth-child(even)::before {
+		content:"";
+		position:absolute;
+		bottom:1em;
+		right:-2em;
+		width:0;
+		height:0;
+		border-top:2em solid transparent;
+		border-bottom:2em solid transparent;
+		border-left:2em solid #fff
+	}
+	.speech:nth-child(even)::after {
+		content:"";
+		position:absolute;
+		bottom:0;
+		right:-8em;
+		width:5em;
+		height:5em;
+		background:#fff url(http://stuff.webmaker.org.s3.amazonaws.com/avatars/webmaker-avatar-200x200.png);
+		background-size:cover;
+		border-radius:100%;
+		border:4px solid #fff
+	}
+	.speech:nth-child(even) p::before {
+		content: "you:";
+		font-size: 1.2em;
+		font-weight: 700;
+		display: block;
+	}
+
+	/* this makes a white block for content to go into */
+	.block {
+		background:#fff;
+		margin:1em auto;
+		padding:2em
+	}
+	</style>
+</head>
+<body>
+	<!-- lets kick this interview off with a little introduction -->
+	<div class="feature" id="intro">
+		<div class="block interviewer">
+			<h3>intro</h3>
+			<p>So <strong>{your name here}</strong>, it's wicked awesome that your involved in Webmaker and mentoring people in the ways of learning by making. There must have been some challenges you've faced along the way.</p>
+		</div>
+	</div>
+
+	<div class="qa-container" id="qa-1">
+		<div class="speech" data-question="What is the greatest problem you've faced trying to mentor someone?">
+			<p>What is the greatest problem you've faced trying to mentor someone?</p>
+		</div>
+		<div class="speech">
+			<!-- got an answer to the question? let us know :D -->
+			<p data-answer>...</p>
+		</div>
+	</div>
+	<div class="qa-container" id="qa-2">
+		<div class="speech" data-question="What was the greatest 'Ah Ha' moment for you when first using a teaching kit?">
+			<p>With that in mind what was the greatest 'Ah Ha' moment for you when first using a teaching kit? We understand these provide a collection of activties you can use during events.</p>
+		</div>
+		<div class="speech">
+			<p data-answer>...</p>
+		</div>
+	</div>
+	<div class="qa-container" id="qa-3">
+		<div class="speech" data-question="What 'Ah Ha' moment from an event sticks in your mind?">
+			<p>Mentoring new makers must be a lot of fun. Though events never go the way want them to. What would you say is the single greatest 'Ah Ha' moment at an event?</p>
+		</div>
+		<div class="speech">
+			<p data-answer>...</p>
+		</div>
+	</div>
+	<div class="qa-container" id="qa-4">
+		<div class="speech" data-question="Why are you a webmaker?">
+			<p>Finally we'd love to know what inspired you to get involved with webmaker, and what you feel a webmaker is. Why are you a webmaker?</p>
+		</div>
+		<div class="speech">
+			<p data-answer>...</p>
+		</div>
+	</div>
+</body>
+</html>

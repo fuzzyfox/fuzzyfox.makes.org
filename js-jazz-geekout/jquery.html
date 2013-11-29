@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+		html, body {
+			background: #E3EAEE;
+		}
+		#gallery {
+			background: white;
+			width: 640px;
+			height: 420px;
+			padding: 0;
+			margin: 0;
+			overflow: hidden;
+		}
+
+		#gallery > ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			height: 420px;
+		}
+
+		#gallery > ul > li {
+			margin: 0;
+			padding: 0;
+			height: 420px;
+			width: 640px;
+			display: block;
+			float: left;
+		}
+		#gallery > ul > li.transition {
+			margin-left: -640px;
+			opacity: 0;
+			transition: all ease 1s;
+		}
+	</style>
+
+	<title>JS Jazz Geekout</title>
+</head>
+<body>
+	<div id="gallery">
+		<ul>
+			<li><img src="//placebox.es/640/420/?t=1" alt="img-1"></li>
+			<li><img src="//placebox.es/640/420/?t=2" alt="img-2"></li>
+			<li><img src="//placebox.es/640/420/?t=3" alt="img-3"></li>
+			<li><img src="//placebox.es/640/420/?t=4" alt="img-4"></li>
+			<li><img src="//placebox.es/640/420/?t=5" alt="img-5"></li>
+		</ul>
+	</div>
+	
+	<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script>
+		// some key things we'll be using
+		var $gallery = $('#gallery > ul'), // use $varName to indicate jQuery object
+			$slide = $('#gallery > ul > li:first-child'),
+			delay = 10;
+
+		// set width of gallery to match that of all images lined up 
+		// next to each other.
+		$gallery.width(640 * $gallery.children().length);
+
+		// write the function to change the slides
+		// but do so inside an event listener
+		$gallery.bind('transitionend', function(e){
+			if(e.originalEvent.propertyName == 'opacity'){
+				// remove the transition class from the slide
+				$slide.removeClass('transition');
+
+				// move the slide to the end of the list
+				$gallery.append($slide);
+
+				// make `slide` be the new first slide
+				$slide = $('#gallery > ul > li:first-child');
+			}
+		});
+
+
+		// cause the slides to change every x seconds
+		// where x is the delay we set.
+		setInterval(function(){
+			$slide.addClass('transition');
+		}, delay * 1000);
+
+	</script>
+</body>
+</html>

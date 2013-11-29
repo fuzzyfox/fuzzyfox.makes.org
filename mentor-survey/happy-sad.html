@@ -1,0 +1,130 @@
+<!doctype html>
+<!-- ==========================================================================
+	Nobody's perfect. Not even us. Once in a while something just doesn't work 
+	how you would expect/want/need.
+	
+	The only way to improve is to indentify these ocassions and share them with 
+	the people making the tools/resources. 
+	[Unless your a Webmaker... then you try to remix and make first ;)] 
+
+	With this in mind let us know what hasn't worked for you in the past. It 
+	could be a problem with mentoring and an event, a project you worked on, 
+	or a teaching kit.
+
+	Never have just a negative though. There is always a silver lining. So we'll 
+	finish up on something positive as well :D
+============================================================================ -->
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<!-- 
+			This make is part of a survey!
+			Please don't remove/change this metadata if you want your feedback to count.
+		-->
+		<meta content="playtest" name="webmaker:tags">
+		<meta content="make-based-survey" name="webmaker:tags">
+		<meta content="mentor-survey" name="webmaker:tags">
+		<meta content="http://dl.dropboxusercontent.com/u/7467121/monkeys-at-work.jpg" name="webmaker:thumbnail">
+		
+		<!-- lets get a nice font from the Google Webfonts (http://www.google.com/fonts/) -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+		
+		<!-- give out make a name -->
+		<title>Webmaker made me sad/happy when...</title>
+
+		<!-- prettyfy it -->
+		<style>
+			body {
+				background-color: #4D4E53;
+				max-width: 700px;
+				margin: auto;
+				height: 100%;
+			}
+			.container {
+				background-color: white;
+				color: #fff;
+				font: 22.5px/1.2 "Open Sans", Sans-Serif;
+				max-width: 700px;
+				padding: 45px;
+				margin: 3em auto;
+				position: relative;
+			}
+			.container a {
+				color: inherit;
+				text-decoration: underline;
+			}
+	      	.container a:hover {
+	       		text-decoration: none;
+	      	}
+	      	.emoji {
+	      		text-align: center;
+	      		margin: auto;
+	      		width: 0;
+	      		height: 0;
+	      		margin-top: -2em;
+	      	}
+	      	.emoji span {
+	      		color:  #E3EAEE;
+	      		display: block;
+	      		font-size: 5em;
+	      		width: 0;
+	      		-webkit-transform: rotate(90deg);
+	      		-moz-transform: rotate(90deg);
+	      		-o-transform: rotate(90deg);
+	      		-ms-transform: rotate(90deg);
+	      		transform: rotate(90deg);
+	      	}
+	      	.face {
+	      		height: 200px;
+	      	}
+	      	.face img {
+	      		max-width: 200px;
+				max-height: 200px;
+				display: block;
+				margin: 0 auto;
+	      	}
+	      	.container.sad {
+	      		background: #27AAE1;
+	      	}
+	      	.container.happy {
+				background: #3FB58E;
+	      	}
+		</style>
+	</head>
+	<body>
+		<div class="container sad" data-question="What about webmaker made you sad?">
+			<div class="face">
+				<!-- 
+					Here we've used some clever CSS trickery to make this emoji face the 
+					right way up.
+
+					But we could just as easily use an image instead here.
+				-->
+				<div class="emoji"><span>:(</span></div>
+				<!-- <img src="https://webmaker.org/img/webmaker-404.png" alt=""> -->
+			</div>
+			<div class="content" data-answer>
+				Webmaker made me sad when... <!-- lets finish the sentence, or maybe change it up a little -->
+			</div>
+		</div>
+
+		<!-- This one is the same as the last... only happy! :D -->
+		<div class="container happy" data-question="What about webmaker made you happy?">
+			<div class="face">
+				<div class="emoji"><span>:)</span></div>
+				<!-- <img src="https://assets.mozillalabs.com/Brands-Logos/Webmaker/mozilla-webmaker_logo-only_RGB.png" alt=""> -->
+			</div>
+			<div class="content" data-answer>
+				But it made me happy when...
+			</div>
+		</div>
+
+		<!--
+			Next make in survey: https://fuzzyfox.makes.org/thimble/ah-ha-at-an-event
+
+			**Super Mega Bonus Points!**
+			Use photos of yourself instead of the emoji to show the sad/happy feelings!
+		-->
+	</body>
+</html>

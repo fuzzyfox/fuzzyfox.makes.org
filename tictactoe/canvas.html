@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TicTacToe</title>
+
+	<style>
+		canvas#game {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<!-- table for game to live in -->
+	<canvas id="game" width="302" height="302"></canvas>
+	
+	<button onclick="reset(); return false;">restart</button>
+
+	<!-- game logic -->
+	<script>
+		var game = document.querySelector('canvas#game'),
+			context = game.getContext('2d'),
+			box_size = 100,
+			boxes = [['', '', ''], 
+					 ['', '', ''], 
+					 ['', '', '']],
+			box_number = null,
+			player = 'X';
+
+		function draw_grid(){
+			context.beginPath();
+
+			// draw vertival lines
+			context.moveTo(box_size + 1, 1);
+			context.lineTo(box_size + 1, (3 * box_size + 2));
+			context.moveTo((2 * box_size) + 2, 1);
+			context.lineTo((2 * box_size) + 2, (3 * box_size + 2));
+
+			// draw horizontal lines
+			context.moveTo(1, box_size + 1);
+			context.lineTo((3 * box_size + 2), box_size + 1);
+			context.moveTo(1, (2 * box_size) + 2);
+			context.lineTo((3 * box_size + 2), (2 * box_size) + 2);
+
+			// stoke path so we can see the lines
+			context.stroke();
+		}
+		draw_grid();
+
+		function draw_player(box_number){
+			context.beginPath();
+
+			// draw player O
+			if(player === 'O'){
+				// x coord, y coord, radius, start angle, end angle, anti-clockwise?
+				// start angle = 0, and end angle = 2PI for circle
+				
+				// first row
+				if(box_number < 3){
+					context.arc((box_size / 2) + (box_number * box_size), (box_size / 2), (box_size / 4), 0, (Math.PI * 2), true);
+				}
+				// second row
+				else if(box_number < 6){
+					context.arc((box_size / 2) + ((box_number - 3) * box_size), box_size + (box_size / 2), (box_size / 4), 0, (Math.PI * 2), true);
+				}
+				// third row
+				else {
+					context.arc((box_size / 2) + (box_number - 6) * box_size, (2 * box_size) + (box_size / 2), (box_size / 4), 0, (Math.PI * 2), true);
+				}
+			}
+			// draw player X
+			else {
+				// first row
+				if(box_number < 3){
+					context.moveTo((box_size / 5) + (box_number * box_size), (box_size / 5));
+					context.lineTo(box_size - (box_size / 5) + (box_number * box_size), box_size - (box_size / 5));
+					context.moveTo(box_size - (box_size / 5) + (box_number * box_size), (box_size / 5));
+					context.lineTo((box_size / 5) + (box_number * box_size), box_size - (box_size / 5));
+				}
+				// second row
+				else if(box_number < 6){
+					context.moveTo((box_size / 5) + ((box_number - 3) * box_size), box_size + (box_size / 5));
+					context.lineTo((box_size - (box_size / 5)) + ((box_number - 3) * box_size), box_size + (box_size - (box_size / 5)));
+					context.moveTo((box_size - (box_size / 5)) + ((box_number - 3) * box_size), box_size + (box_size / 5));
+					context.lineTo((box_size / 5) + ((box_number - 3) * box_size), box_size + (box_size - (box_size / 5)));
+				}
+				// third row
+				else {
+					context.moveTo((box_size / 5) + ((box_number - 6) * box_size), (2 * box_size) + (box_size / 5));
+					context.lineTo((box_size - (box_size / 5)) + ((box_number - 6) * box_size), (2 * box_size) + (box_size - (box_size / 5)));
+					context.moveTo((box_size - (box_size / 5)) + ((box_number - 6) * box_size), (2 * box_size) + (box_size / 5));
+					context.lineTo((box_size / 5) + ((box_number - 6) * box_size), (2 * box_size) + (box_size - (box_size / 5)));
+				}
+			}
+
+			// stroke path so we can see the lines
+			context.stroke();
+		}
+
+		function check_win(cell){
+			return (((cell[0] === cell[1]) && (cell[1] === cell[2])) && 
+				((cell[0] !== '') && (cell[1] !== '') && (cell[2] !== '')));
+		}
+
+		function change_player(){
+			if(player === 'X'){
+				player = 'O';
+			}
+			else {
+				player = 'X';
+			}
+		}
+
+		function coord_to_box_number(event){
+
+			// calculate column
+			// col 1
+			if(event.clientX <= box_size){
+				box_number = 0;
+			}
+			// col 2
+			else if (event.clientX <= (2 * box_size)){
+				box_number = 1;
+			}
+			// col 3
+			else {
+				box_number = 2;
+			}
+
+			// calculate row and thus correct box number
+			// row 1 = assumed if not either of below
+			// 
+			// row 2
+			if((event.clientY > box_size) && (event.clientY <= (2 * box_size))){
+				box_number = box_number + 3;
+			}
+			// row 3
+			else if((event.clientY > (2 * box_size)) && (event.clientY <= (3 * box_size))){
+				box_number = box_number + 6;
+			}
+		}
+
+		// make a move / check for win
+		game.addEventListener('click', function(event){
+			// find out where player clicked
+			coord_to_box_number(event);
+
+			// check move valid and store if it is.
+			if((box_number < 3) && (boxes[0][box_number] === '')) {
+				boxes[0][box_number] = player;
+			}
+			else if((box_number > 2) && (box_number < 6) && (boxes[1][box_number - 3] === '')){
+				boxes[1][box_number - 3] = player;
+			}
+			else if((box_number > 5) && (box_number < 9) && (boxes[2][box_number - 6] === '')) {
+				boxes[2][box_number - 6] = player;
+			}
+			// if it wasnt valid do nothing.
+			else {
+				return;
+			}
+
+			// move was valid so draw it (already stored)
+			draw_player(box_number);
+
+			// check for win horizontally
+			for(var i = 0; i < 3; i++){
+				check_win(boxes[i]) ? alert(player + ' wins!') : null;
+			}
+			
+			// check for win vertically
+			for(var x = 0; x < 3; x++){
+				check_win([boxes[0][x], boxes[1][x], boxes[2][x]]) ? alert(player + ' wins!') : null;
+			}
+
+			// check for win diagonally down
+			check_win([boxes[0][0], boxes[1][1], boxes[2][2]]) ? alert(player + ' wins!') : null;
+
+			// check for win diagonally up
+			check_win([boxes[2][0], boxes[1][1], boxes[0][2]]) ? alert(player + ' wins!') : null;
+
+			// change player
+			change_player();
+		});
+
+		function reset(){
+			var tmp = game.width;
+			game.width = tmp + 1;
+			game.width = tmp;
+			draw_grid();
+			boxes = [['', '', ''], 
+					 ['', '', ''], 
+					 ['', '', '']];
+		}
+	</script>
+</body>
+</html>

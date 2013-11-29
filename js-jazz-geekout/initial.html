@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+		html, body {
+			background: #4D4E53;
+			font: 14px/1.4 "Open Sans", Helvetica, Arial, Sans-Serif;
+			color: #fff;
+		}
+		#gallery {
+			background: white;
+			width: 640px;
+			height: 420px;
+			padding: 0;
+			margin: 10em auto 0;
+			border: 1em solid white;
+		}
+
+		#gallery > ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			height: 420px;
+		}
+
+		#gallery > ul > li {
+			margin: 0;
+			padding: 0;
+			height: 420px;
+			width: 640px;
+		}
+		
+		#gallery ul > li > img {
+			max-width: 100%;
+			display: block;
+			margin: 0 auto;
+		}
+
+		#gallery .content-slide {
+			padding: 28px; /*2em*/
+			background: #3FB58E;
+			color: #fff;
+			height: 364px;
+			font-size: 1.4em;
+		}
+	</style>
+
+	<title>JS Jazz Geekout</title>
+</head>
+<body>
+	<div id="gallery">
+		<ul>
+			<li>
+				<div class="content-slide">
+					<h2>Make an image gallery with javascript</h2>
+					<p>You’ll get an introduction to Javascript variables, functions, events and conditions, some quick tips on CSS tansitions and some collaborative coding while we hack on the image gallery. You’ll also have the opportunity to hear about past Mozfests and gear up for the Mozilla Festival 2013.</p>
+					<span style="transform:rotate(90deg);display:block;width:1em;height:1em;font-size:3em;margin:auto;">:)</span>
+				</div>
+			</li>
+			<li><img src="http://farm8.staticflickr.com/7279/8170369458_cccc91a4ce_z.jpg" alt="img-1"></li>
+			<li><img src="http://farm9.staticflickr.com/8482/8171937860_fab3023fe7_z.jpg" alt="img-2"></li>
+			<li><img src="http://farm9.staticflickr.com/8204/8175049476_798ea876ca_z.jpg" alt="img-3"></li>
+			<li><img src="http://farm6.staticflickr.com/5286/5348773078_92ee7127a7_z.jpg" alt="img-4"></li>
+		</ul>
+	</div>
+	
+	<!-- some shims to abstract away some cross browser issues -->
+	<script src="//raw.github.com/eligrey/classList.js/master/classList.min.js"></script>
+	<script src="//gist.github.com/fuzzyfox/6762206/raw/EventTarget.addEventListener.min.js"></script>
+	
+	<!-- this is our gallery manipulation code -->
+	<script>
+		// some key things we'll be using
+			// the gallery, the whole gallery
+		var gallery = document.querySelector('#gallery > ul'),
+			// the first slide in the list
+			slide = document.querySelector('#gallery > ul > li'),
+			// the delay bewteen transitions in seconds
+			delay = 10;
+
+		// write the function to change the slides
+		// but do so inside an event listener
+		gallery.addEventListener('transitionend', function(e){
+				// remove the transition class from the slide
+				slide.classList.remove('transition');
+
+				// move the slide to the end of the list
+				gallery.appendChild(slide);
+
+				// make `slide` be the new first slide
+				slide = document.querySelector('#gallery > ul > li');
+		});
+
+		// cause the slides to change every x seconds
+		// where x is the delay we set.
+		var nextSlide = function(){
+				slide.classList.add('transition');
+			},
+			interval = setInterval(nextSlide, delay * 1000);
+	</script>
+</body>
+</html>

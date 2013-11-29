@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+
+	============================================================================ -->
+	<html>
+	<head>
+		<meta charset="utf-8">
+
+	<!-- 
+		This make is part of a survey!
+		Please don't remove/change this metadata if you want your feedback to count.
+	-->
+	<meta content="playtest" name="webmaker:tags">
+	<meta content="mentor-survey" name="webmaker:tags">
+	<meta content="make-based-survey-b" name="webmaker:tags">
+	<meta content="http://dl.dropboxusercontent.com/u/7467121/monkeys-at-work.jpg" name="webmaker:thumbnail">
+
+	<!-- name our make -->
+	<title>Flipping Awesome!</title>
+
+	<!-- lets get a nice font from the Google Webfonts (http://www.google.com/fonts/) -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700">
+
+	<!-- 
+		There's a lot of beautification code here, feel free to tinker 
+		tweak and change it up :D
+	-->
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+	body {
+		font: 14px/1.4 "Open Sans", Helvetica, Arial, Sans-Serif;
+		background: #E3EAEE;
+		color: #4D4E53;
+		max-width: 68em;
+		position: relative;
+		margin: 3em auto;
+	}
+
+	@media (min-width: 952px) {
+		body {
+			-webkit-column-count: 2;
+			-moz-column-count: 2;
+			column-count: 2;
+
+			-webkit-column-gap: 0;
+			-moz-column-gap: 0;
+			column-gap: 0;
+		}
+	}
+	@media (max-width: 951px) {
+		body {
+			width: 476px;
+			margin: auto;
+		}
+	}
+
+	/* entire container, keeps perspective */
+	.flip-container {
+		perspective: 300px;
+		z-index: 1;
+		margin: 14px;
+		float: left;
+	}
+
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper {
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+		-o-transform: rotateY(180deg);
+		-ms-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+	}
+
+	.flip-container {
+		width: 210px;
+		height: 210px;
+	}
+
+	.front,.back {
+		width: 182px;
+		height: 182px;
+	}
+
+	.flip-container.large {
+		width: 448px;
+		height: 448px;
+		perspective: 700px;
+	}
+
+	.flip-container.large .front,.flip-container.large .back {
+		width: 420px;
+		height: 420px;
+	}
+	
+	.flip-container.wide {
+		width: 448px;
+		height: 210px;
+		perspective: 700px;
+	}
+	.flip-container.wide .front, .flip-container.wide .back {
+		width: 420px;
+		height: 182px;
+	}
+
+	/* flip speed goes here */
+	.flipper {
+		-webkit-transition: 0.3s;
+		-moz-transition: 0.3s;
+		-o-transition: 0.3s;
+		-ms-transition: 0.3s;
+		transition: 0.3s;
+
+		-webkit-transition-delay: 0.3s;
+		-moz-transition-delay: 0.3s;
+		-o-transition-delay: 0.3s;
+		-ms-transition-delay: 0.3s;
+		transition-delay: 0.3s;
+
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		position: relative;
+	}
+
+	/* hide back of pane during swap */
+	.front,.back {
+		backface-visibility: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 14px;
+		overflow: hidden;
+	}
+
+	/* front pane, placed above back */
+	.front {
+		z-index: 2;
+		background: #fff;
+		font-size: 2em;
+		text-align: center;
+		display: table;
+	}
+
+	/* back, initially hidden pane */
+	.back {
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+		-o-transform: rotateY(180deg);
+		-ms-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+		background: #4D4E53;
+		color: #fff;
+		text-align: center;
+		font-size: 1.4em;
+		display: table;
+	}
+	.content {
+		display: table-cell;
+		margin: 0;
+		padding: 0;
+		vertical-align: middle;
+		height: 100%;
+		width: 100%;
+	}
+	.content img {
+		display: block;
+	}
+
+	.front *, .back * {
+		max-width: 182px;
+		max-height: 182px;
+	}
+	.large .front *, .large .back * {
+		max-width: 420px;
+		max-height: 420px;
+	}
+	.wide .front *, .wide .back * {
+		max-width: 420px;
+		max-height: 182px;
+	}
+
+	.large .front iframe,
+	.large .back iframe {
+		width: 420px !important;
+		height: 269px !important;
+		border: none;
+		display: inline-block;
+	}
+
+	.emoji {
+		text-align: center;
+		margin: auto;
+		width: 0;
+		height: 0;
+		margin-top: 0;
+	}
+	.emoji span {
+		color:  #E3EAEE;
+		display: block;
+		font-size: 56px;
+		width: 0;
+		-webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+		transform: rotate(90deg);
+	}
+	.face img {
+		max-width: 120px;
+		max-height: 120px;
+		display: block;
+		margin: 0 auto;
+	}
+	.explination {
+		position: absolute;
+		bottom: 0;
+		font-size: 14px;
+		margin-top: 10em;
+		border-top: 1px solid rgb(227, 234, 238);
+		padding-bottom: 10px;
+		text-align: left;
+	}
+	.back a {
+		color: #27AAE1;
+	}
+	</style>
+</head>
+<body>
+	<!-- .flip-container>.flipper>.front+.back -->
+	<div class="flip-container">
+		<div class="flipper">
+			<div class="front">
+				<div class="content">
+					I'm a webmaker because...
+				</div>
+			</div>
+			<div class="back">
+				<div class="content">
+					<p>Remixing the web is fun, and lets me express myself in a digital space.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flip-container">
+		<div class="flipper">
+			<div class="front"></div>
+			<div class="back">?</div>
+		</div>
+	</div>
+	<div class="flip-container large">
+		<div class="flipper">
+			<div class="front">
+				<div class="content">
+					<img src="https://webmaker.org/img/webmaker-404.png" alt="">
+					404:I found a loose thread!
+				</div>
+			</div>
+			<div class="back">
+				<div class="content">
+					Sometimes it's there's no clear/easy to find information for offline makes.
+					<div class="explination">
+						<strong>Did you know?</strong> there are a whole range of errors that can happen on a website. A 404 error means that the page you were looking for was not found. Checkout some <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes">other types of errors</a>.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flip-container">
+		<div class="flipper">
+			<div class="front"><div class="content">What</div></div>
+			<div class="back">?</div>
+		</div>
+	</div>
+	<div class="flip-container">
+		<div class="flipper">
+			<div class="front">
+				<div class="content" style="font-size:14px;">
+					Makers can work around technical issues by paper prototyping
+				</div>
+			</div>
+			<div class="back">
+				<div class="content">
+					<p>...that's an "ah ha" I've had.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flip-container large">
+		<div class="flipper">
+			<div class="front">
+				<div class="content">
+					<img src="experimental-make_thumb.png" alt="">
+				</div>
+			</div>
+			<div class="back">
+				<div class="content">
+					<iframe src="https://pkittle.makes.org/popcorn/1970_" frameborder="0" mozallowfullscreen webkitallowfullscreen allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flip-container">
+		<div class="flipper">
+			<div class="front"></div>
+			<div class="back"></div>
+		</div>
+	</div>
+	<div class="flip-container">
+		<div class="flipper">
+			<div class="front"></div>
+			<div class="back"></div>
+		</div>
+	</div>
+	<div class="flip-container wide">
+		<div class="flipper">
+			<div class="front" style="background: #3FB58E;color:#fff;">
+				<div class="content" style="font-size:14px;">
+					<div class="face">
+						<div class="emoji"><span>:)</span></div>
+						<!-- <img src="https://assets.mozillalabs.com/Brands-Logos/Webmaker/mozilla-webmaker_logo-only_RGB.png" alt=""> -->
+					</div>
+					<div data-answer>
+						Webmaker made me happy when...
+					</div>
+				</div>
+			</div>
+			<div class="back"  style="background: #27AAE1;color:#fff;">
+				<div class="content" style="font-size:14px;">
+					<div class="face">
+						<div class="emoji"><span>:(</span></div>
+						<!-- <img src="https://assets.mozillalabs.com/Brands-Logos/Webmaker/mozilla-webmaker_logo-only_RGB.png" alt=""> -->
+					</div>
+					<div data-answer>
+						Webmaker made me sad when...
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

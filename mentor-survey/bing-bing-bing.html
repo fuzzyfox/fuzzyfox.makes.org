@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+	We love to hear your "Ah Ha" moments. We're not the only ones that love them 
+	either. You may or may not know of Oprah, but she sure loves them to.
+
+	This make explains itself for the most part. We'll leave you to do this one 
+	on you're own. We're only slowing you down anyway :D 
+============================================================================ -->
+<html>
+<head>
+	<meta charset="utf-8">
+	<!-- 
+		This make is part of a survey!
+		Please don't remove/change this metadata if you want your feedback to count.
+	-->
+	<meta content="playtest" name="webmaker:tags">
+	<meta content="make-based-survey" name="webmaker:tags">
+	<meta content="mentor-survey" name="webmaker:tags">
+	<meta content="http://dl.dropboxusercontent.com/u/7467121/monkeys-at-work.jpg" name="webmaker:thumbnail">
+
+	<!-- name our make -->
+	<title>Bing, Bing, Bing!</title>
+
+	<!-- get our favourite font -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+	<!-- beautify things -->
+	<style>
+	body {
+		background-color: #27AAE1;
+		max-width: 700px;
+		margin: 3em auto;
+		height: 100%;
+	}
+	.container {
+		background-color: white;
+		color: #4d4e53;
+		font: 14px/1.2 "Open Sans", Sans-Serif;
+		padding: 45px;
+		margin: 3em auto;
+		position: relative;
+	}
+	.container p {
+		margin: 0 0 0 10px;
+	}
+	.container a {
+		color: #27AAE1;
+		text-decoration: none;
+	}
+	.container a:hover {
+		text-decoration: underline;
+	}
+
+	.intro iframe {
+		width: 100%;
+		padding: 1em 0;
+		border: none;
+	}
+	.intro > p {
+		font-weight: 300;
+		font-size: 1.4em;
+	}
+	.speach {
+		font-size: 1.2em;
+	}
+	.speach:nth-child(even) {
+		text-align: right;
+	}
+	.speach:nth-child(even)::after {
+		content: "";
+		width: 0;
+		height: 0;
+		position: absolute;
+		right: -0.99em;
+		top: 1em;
+		border-top: 1em solid transparent;
+		border-bottom: 1em solid transparent;
+
+		border-left: 1em solid white;
+	}
+	.speach:nth-child(odd)::before {
+		content: "";
+		width: 0;
+		height: 0;
+		position: absolute;
+		left: -0.99em;
+		top: 1em;
+		border-top: 1em solid transparent;
+		border-bottom: 1em solid transparent;
+
+		border-right: 1em solid white;
+	}
+	</style>
+</head>
+<body data-question="What was an 'Ah Ha' moment about teaching kits for you?">
+	<!-- 
+		this little introduction should help you figure the rest out, 
+		though you can always remix it :D
+	-->
+	<div class="container intro">
+		<p>I like <strong>"Ah Ha"</strong> moments. Here's one from Oprah:</p>
+		<iframe width="640" height="360" src="https://www.youtube.com/embed/Rwcp_oEIwnU" frameborder="0" allowfullscreen></iframe>
+		<p>If Oprah asked me about a webmaking <strong>"Ah Ha"</strong>, it would probably go a little like this:</p>
+	</div>
+	
+	<div class="interview">
+		<div class="container speach">
+			<strong>Oprah:</strong>
+			<p>You are a mentor for webmaking, what was an "Ah Ha" moment you had in relation to the teaching kits?</p>
+		</div>
+		
+		<div class="container speach">
+			<strong>Me:</strong>
+			<!-- replace the "..." with your response to Oprahs question -->
+			<p data-answer>...</p>
+		</div>
+		
+		<div class="container speach">
+			<strong>Oprah:</strong>
+			<p>Bing, Bing, Bing!</p>
+		</div>
+	</div>
+
+	<!-- 
+		Next make in survey: https://fuzzyfox.makes.org/thimble/why-im-a-webmaker
+
+		**Super Mega Bonus Points!**
+		Replace the introduction video with a popcorn project! Keep in mind the question asked, 
+		by Oprah, and have your popcorn project follow a similar (interview like) style.
+	-->
+</body>
+</html>

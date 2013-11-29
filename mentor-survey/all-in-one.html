@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+
+============================================================================ -->
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<!-- 
+		This make is part of a survey!
+		Please don't remove/change this metadata if you want your feedback to count.
+	-->
+	<meta content="playtest" name="webmaker:tags">
+	<meta content="mentor-survey" name="webmaker:tags">
+	<meta content="make-based-survey-b" name="webmaker:tags">
+	<meta content="http://dl.dropboxusercontent.com/u/7467121/monkeys-at-work.jpg" name="webmaker:thumbnail">
+
+	<!-- name our make -->
+	<title>The interview</title>
+
+	<!-- lets get a nice font from the Google Webfonts (http://www.google.com/fonts/) -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700">
+
+	<!-- 
+		There's a lot of beautification code here, feel free to tinker 
+		tweak and change it up :D
+	-->
+	<style>
+	* {
+		margin:0;
+		padding:0
+	}
+	body {
+		font:14px/1.4 "Open Sans", Helvetica, Arial, Sans-Serif;
+		background:#E3EAEE;
+		color:#4D4E53;
+		max-width:700px;
+		position:relative;
+		margin:3em auto
+	}
+	.qa-container {
+		background:inherit;
+		height:100%;
+		z-index:-1;
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+		filter:alpha(opacity=0);
+		opacity:0
+	}
+	.qa-container:target {
+		z-index:1;
+		opacity:1
+	}
+	.speech {
+		background:#fff;
+		position:relative;
+		margin:1em auto;
+		padding:2em
+	}
+	.speech:nth-child(odd) {
+		text-align:right
+	}
+	.speech:nth-child(even)::before {
+		content:"";
+		position:absolute;
+		top:1em;
+		left:-2em;
+		width:0;
+		height:0;
+		border-top:2em solid transparent;
+		border-bottom:2em solid transparent;
+		border-right:2em solid #fff
+	}
+	.speech:nth-child(even)::after {
+		content:"";
+		position:absolute;
+		top:0;
+		left:-8em;
+		width:5em;
+		height:5em;
+		background:#fff url(https://assets.mozillalabs.com/Brands-Logos/Webmaker/mozilla-webmaker_logo-only_RGB.png);
+		background-size:cover;
+		border-radius:100%;
+		border:4px solid #fff
+	}
+	.speech:nth-child(even) p::before {
+		content: "mozteach:";
+		font-size: 1.2em;
+		font-weight: 700;
+		display: block;
+	}
+	.speech:nth-child(odd)::before {
+		content:"";
+		position:absolute;
+		top:1em;
+		right:-2em;
+		width:0;
+		height:0;
+		border-top:2em solid transparent;
+		border-bottom:2em solid transparent;
+		border-left:2em solid #fff
+	}
+	.speech:nth-child(odd)::after {
+		content:"";
+		position:absolute;
+		top:0;
+		right:-8em;
+		width:5em;
+		height:5em;
+		background:#fff url(http://stuff.webmaker.org.s3.amazonaws.com/avatars/webmaker-avatar-200x200.png);
+		background-size:cover;
+		border-radius:100%;
+		border:4px solid #fff
+	}
+	.speech:nth-child(odd) p::before {
+		content: "you:";
+		font-size: 1.2em;
+		font-weight: 700;
+		display: block;
+	}
+	.qa-controls {
+		font-size:3em;
+		color:inherit;
+		text-align:right;
+		display:block
+	}
+	.qa-controls a {
+		color:inherit;
+		text-decoration:none
+	}
+	.block {
+		background:#fff;
+		margin:1em auto;
+		padding:2em
+	}
+	/*
+		Animations/Transitions
+
+		Feeling adventurous? Change up the animations a little!
+		CSS Animation: https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_animations
+		CSS Transitions: https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_transitions
+	*/
+	.qa-container:not(:target) .speech, #outro:not(:target) .block {
+		opacity:0
+	}
+	.qa-container .speech, #outro .block, #intro .block {
+		opacity:1;
+		-webkit-transition:.8s all;
+		-moz-transition:.8s all;
+		-o-transition:.8s all;
+		-ms-transition:.8s all;
+		transition:.8s all;
+		-webkit-transition-delay:.2s;
+		-moz-transition-delay:.2s;
+		-o-transition-delay:.2s;
+		-ms-transition-delay:.2s;
+		transition-delay:.2s
+	}
+	</style>
+</head>
+<body>
+	<!-- lets kick this interview off with a little introduction -->
+	<div class="feature" id="intro">
+		<div class="qa-controls"><a href="#qa-1">&gt;</a></div>
+		<div class="block">
+			<h3>intro</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, assumenda, nihil, repellendus possimus beatae et quae nisi aspernatur facere maxime dolore incidunt aliquam vero officiis libero ea nostrum nobis velit.</p>
+		</div>
+	</div>
+
+	<!-- .qa-container#qa-$>(.qa-controls>a{&lt;}+{ }+a{&gt;})+(.speech[data-question]>p{...})+(.speech>p[data-answer]{...}) -->
+	<div class="qa-container" id="qa-1">
+		<div class="qa-controls"><a href="#intro">&lt;</a> <a href="#qa-2">&gt;</a></div>
+		<div class="speech" data-question="What is the greatest problem you've faced trying to mentor someone?">
+			<p>What is the greatest problem you've faced trying to mentor someone?</p>
+		</div>
+		<div class="speech">
+			<p data-answer>...</p>
+		</div>
+	</div>
+	<div class="qa-container" id="qa-2">
+		<div class="qa-controls"><a href="#qa-1">&lt;</a> <a href="#qa-3">&gt;</a></div>
+		<div class="speech" data-question="What was the greatest 'Ah Ha' moment for you when first using a teaching kit?">
+			<p>What was the greatest 'Ah Ha' moment for you when first using a teaching kit?</p>
+		</div>
+		<div class="speech">
+			<p data-answer>...</p>
+		</div>
+	</div>
+	<div class="qa-container" id="qa-3">
+		<div class="qa-controls"><a href="#qa-2">&lt;</a> <a href="#qa-4">&gt;</a></div>
+		<div class="speech" data-question="Why are you a webmaker?">
+			<p>Why are you a webmaker?</p>
+		</div>
+		<div class="speech">
+			<p data-answer>...</p>
+		</div>
+	</div>
+	<div class="qa-container" id="qa-4">
+		<div class="qa-controls"><a href="#qa-3">&lt;</a> <a href="#outro">&gt;</a></div>
+		<div class="speech" data-question="What 'Ah Ha' moment from an event sticks in your mind?">
+			<p>What 'Ah Ha' moment from an event sticks in your mind?</p>
+		</div>
+		<div class="speech">
+			<p data-answer>...</p>
+		</div>
+	</div>
+
+	<div class="qa-container" id="outro">
+		<div class="qa-controls">
+			<a href="#qa-4">&lt;</a>&nbsp;&nbsp;&nbsp;
+		</div>
+		<div class="block">
+			<h3>outro</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, vitae, mollitia atque nulla esse ad eum quo impedit aut deleniti accusamus veritatis quos cumque. Odio esse delectus quasi veritatis repellat.</p>
+			<div class="make-bar-button">
+            <a href="https://thimble.webmaker.org/project/4927/remix" target="_blank" class="make-bar-button-remix make-bar-link"><span>Remix</span></a>
+          </div>
+		</div>
+	</div>
+</body>
+</html>

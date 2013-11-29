@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+		html, body {
+			background: #4D4E53;
+			font: 14px/1.4 "Open Sans", Helvetica, Arial, Sans-Serif;
+			color: #fff;
+		}
+		#gallery {
+			background: white;
+			width: 640px;
+			height: 420px;
+			padding: 0;
+			margin: 0;
+			overflow: hidden;
+			margin: 10em auto 0;
+			border: 1em solid white;
+		}
+
+		#gallery > ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			height: 420px;
+		}
+
+		#gallery > ul > li {
+			margin: 0;
+			padding: 0;
+			height: 420px;
+			width: 640px;
+			display: block;
+			float: left;
+		}
+		#gallery > ul > li.transition {
+			margin-left: -640px;
+			opacity: 0;
+			transition: all ease 1s;
+		}
+
+		#gallery ul > li > img {
+			max-width: 100%;
+			display: block;
+			margin: 0 auto;
+		}
+
+		#gallery .content-slide {
+			padding: 28px; /*2em*/
+			background: #3FB58E;
+			color: #fff;
+			height: 364px;
+			font-size: 1.4em;
+		}
+		
+		/* bonus feature css */
+		#gallery-controls {
+			margin: 1em auto;
+			text-align: center;
+		}
+		#gallery-controls a {
+			color: white;
+		}
+	</style>
+
+	<title>JS Jazz Geekout</title>
+</head>
+<body>
+	<div id="gallery">
+		<ul>
+			<li>
+				<div class="content-slide">
+					<h2>Make an image gallery with javascript</h2>
+					<p>You’ll get an introduction to Javascript variables, functions, events and conditions, some quick tips on CSS tansitions and some collaborative coding while we hack on the image gallery. You’ll also have the opportunity to hear about past Mozfests and gear up for the Mozilla Festival 2013.</p>
+					<span style="transform:rotate(90deg);display:block;width:1em;height:1em;font-size:3em;margin:auto;">:)</span>
+				</div>
+			</li>
+			<li><img src="http://farm8.staticflickr.com/7279/8170369458_cccc91a4ce_z.jpg" alt="img-1"></li>
+			<li><img src="http://farm9.staticflickr.com/8482/8171937860_fab3023fe7_z.jpg" alt="img-2"></li>
+			<li><img src="http://farm9.staticflickr.com/8204/8175049476_798ea876ca_z.jpg" alt="img-3"></li>
+			<li><img src="http://farm6.staticflickr.com/5286/5348773078_92ee7127a7_z.jpg" alt="img-4"></li>
+		</ul>
+	</div>
+	<div id="gallery-controls">
+		<a href="#prev" rel="prevSlide">prev</a>
+		<a href="#next" rel="nextSlide">next</a>
+	</div>
+	
+	<!-- some shims to abstract away some cross browser issues -->
+	<script src="//raw.github.com/eligrey/classList.js/master/classList.min.js"></script>
+	<script src="//gist.github.com/fuzzyfox/6762206/raw/EventTarget.addEventListener.min.js"></script>
+
+	<script>
+		// some key things we'll be using
+			// the gallery, the whole gallery
+		var gallery = document.querySelector('#gallery > ul'),
+			// the first slide in the list
+			slide = document.querySelector('#gallery > ul > li'),
+			// the delay bewteen transitions in seconds
+			delay = 10,
+			// use a boolean flag to indicate if we're showing the 
+			// previous slide next
+			prevSlideFlag = false;
+
+		// set width of gallery to match that of all images lined up 
+		// next to each other.
+		gallery.style.width = (640 * gallery.children.length) + "px";
+
+		// write the function to change the slides
+		// but do so inside an event listener
+		gallery.addEventListener('transitionend', function(e){
+			if(e.propertyName == 'opacity'){
+				// remove the transition class from the slide
+				slide.classList.remove('transition');
+
+				// move the slide to the end of the list
+				gallery.appendChild(slide);
+
+				// make `slide` be the new first slide
+				slide = document.querySelector('#gallery > ul > li');
+
+				// bonus (prev button)
+				if(prevSlideFlag){
+					// okay so the previous slide has just been loaded, 
+					// lets get the full list of slides
+					var slides = document.querySelectorAll('#gallery > ul > li');
+					// and put the last side shown next (to keep the list order)
+					gallery.insertBefore(slides[slides.length - 1], slides[1]);
+					// and we've dealt w/ this so set to false.
+					prevSlideFlag = false;
+				}
+			}
+		});
+
+
+		// cause the slides to change every x seconds
+		// where x is the delay we set.
+		var nextSlide = function(){
+				slide.classList.add('transition');
+			},
+			prevSlide = function(){
+				// we need to know about several slides, so lets get the full list
+				var slides = document.querySelectorAll('#gallery > ul > li');
+				// lets move the last slide into the 2nd place
+				gallery.insertBefore(slides[slides.length - 1], slides[1]);
+				// transition the first slide out the way
+				slide.classList.add('transition');
+				// tell the transition watching event that we've just selected the 
+				// previous slide
+				prevSlideFlag = true;
+			},
+			interval = setInterval(nextSlide, delay * 1000);
+
+		// ** bonus (prev/next buttons) **
+		// lets do this using some delegation
+		// create an easy access to the controlls (all of them)
+		var controls = document.querySelector('#gallery-controls');
+		// add a click event to the whole thing
+		controls.addEventListener('click', function(e){
+			// now work out which control was clicked 
+			// using a switch (kinda like a fancy `if`)
+			switch(e.target.rel) {
+				// if it was the next slide control move to the next slide
+				case 'nextSlide':
+					// first we need to stop the slide change timer
+					clearInterval(interval);
+					// now move to the next slide
+					nextSlide();
+					// and restart the timer.
+					interval = setInterval(nextSlide, delay * 1000);
+
+					// we stopped, then restarted so that the slide 
+					// we just changed to is still shown for its full share
+					// of time.
+				break;
+				// if it was the previous slide control move to the previous slide
+				case 'prevSlide':
+					// should be able to guess whats happening here now
+					clearInterval(interval);
+					prevSlide();
+					interval = setInterval(nextSlide, delay * 1000);
+				break;
+				// if none of the above match, then do nothing.
+				default:
+					return;
+				break;
+			}
+
+			// stop url change
+			e.preventDefault();
+		});
+	</script>
+</body>
+</html>
