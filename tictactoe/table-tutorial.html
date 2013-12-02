@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Tutorial</title>
+	<!-- this stylesheet provides default styles for tutorials -->
+	<link href="//thimble.webmaker.org/learning_projects/tutorial/tutorial.css" rel="stylesheet">
+	<!-- these scripts turn your make into a tutorial -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//thimble.webmaker.org/learning_projects/tutorial/tutorial.js"></script>
+	<script>
+	jQuery(document).ready(function($){
+		$('body').tutorial();
+
+		$('.code-hint a').click(function(e){
+			$(this).parent().find('code').toggle();
+		});
+	});
+	</script>
+	<style>
+	hr {
+		background: #ccc;
+		border: none;
+		height: 1px;
+	}
+
+	img {
+		max-width: 100%;
+	}
+
+	#game-preview {
+		width: 310px;
+		height: 310px;
+		margin: -62px;
+		display: block;
+		-webkit-transform: scale(0.6);
+		-moz-transform: scale(0.6);
+		-o-transform: scale(0.6);
+		-ms-transform: scale(0.6);
+		transform: scale(0.6);
+		overflow: hidden;
+	}
+	
+	.code-hint {
+		background: #eee;
+		padding: 4px;
+	}
+	.code-hint > a {
+		display: block;
+		font-style: italic;
+		font-size: smaller;
+	}
+	.code-hint > code {
+		display: none;
+	}
+	code > pre {
+		max-width: 100%;
+		overflow: auto;
+	}
+	</style>
+</head>
+<body>
+    <!--
+      enclose each tutorial step in its own section tags
+      you can include any sort of markup, including images
+      you can also add more sections
+
+      if you want to attach this tutorial to another make,
+      first publish this make
+      then tag the other make with prefix "tutorial-" followed by the url for this make
+  -->
+
+	<section>
+		<h1>TicTacToe</h1>
+		<p>In this project we're going to go through the process of creating a simple game of TicTacToe with HTML, CSS, and JavaScript.</p>
+		<p>We'll use HTML and CSS to visualize the game, and JavaScript to control the logic (working out who wins / loses).</p>
+
+		<hr>
+
+		<p>At the top of this tutorial section you'll see two buttons, use these to move forward and back through the tutorial.</p>
+		<img alt="thimble-tutorial-pagination" src="//support.cdn.mozilla.net/media/uploads/gallery/images/2013-10-25-06-53-50-ad11bd.png" style="box-shadow: 0 0 4px #444; display: block; margin:auto;">
+
+		<hr>
+
+		<h2>Game Preview</h2>
+		<p>Lets take a quick peek at what we'll be making before we get started.</p>
+		<iframe src="//fuzzyfox.makes.org/thimble/tictactoe-table-version_" frameborder="0" id="game-preview"></iframe>
+		<p>What you end up with doesn't have to be exactly the same, this is just the simple example we came up with.</p>
+	</section>
+
+	<section>
+		<h1>Make it look right</h1>
+		<p>Right now we have a little bit of the code we're going to need to make this game... but in the preview we can see that it just doesn't look like TicTacToe yet.</p>
+		<p>On line 25 we can see that we have a table... why cant we see it though? Well at the moment none of the cells have any borders. So lets add some with CSS.</p>
+		<p>Jump up to line 9 and you can see we've got a little CSS styling our cells. What happens if we give them a border?</p>
+	
+		<div class="code-hint">
+			<a href="#code-hint-1">toggle hint</a>
+			<code>
+				<pre>border: 2px solid #444;</pre>
+			</code>
+		</div>
+
+		<hr>
+
+		<p>Remember how the preview looked? See if you can make your's look similar on line 16.</p>
+		<p><small><em><strong>Hint:</strong> use <code>:first&#8209;child</code> and/or <code>:last&#8209;child</code> selectors.</em></small></p>
+		<div class="code-hint">
+			<a href="#cheat-1">CHEAT</a>
+			<code>
+				<pre>table#game tr:first-child td { border-top: none; }
+table#game tr:last-child td { border-bottom: none; }
+table#game tr td:first-child { border-left: none; }
+table#game tr td:last-child { border-right: none; }</pre>
+			</code>
+		</div>
+
+		<hr>
+
+		<p>Lets make one more style tweak to make it easy for people to know which cell is going to be selected. How about a nice hover effect for each cell?</p>
+		<p>In CSS this can be done with the <code>:hover</code> selector. Try doing this on line 20.</p>
+		
+		<div class="code-hint">
+			<a href="#code-hint-3">toggle hint</a>
+			<code>
+				<pre>table#game td:hover {
+  /* rules to style the cell 
+     on hover go here */
+}</pre>
+			</code>
+		</div>
+
+		<p>In the example we changed the background color to a light grey.</p>
+	</section>
+
+	<section>
+		<h1>Making a move</h1>
+		<p>So far we've used CSS to make the template code look a little more like like the game we know and love. Now we're going to start playing with some JavaScript to make this game work!</p>
+		<p>Down towards the bottom of the code, somewhere around line 54, is a function called <code>change_player</code>. A function in its simplest form is just a block of code which does something, that we can reuse later by using its name.</p>
+	</section>
+</body>
+</html>

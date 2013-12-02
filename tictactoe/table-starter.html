@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TicTacToe</title>
+
+	<style>
+		/* set cells to same width x height to make grid */
+		table#game td {
+			width: 100px;
+			height: 100px;
+			text-align: center;
+			font: normal 50px/1.5 "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+		}
+		
+		/* make it look a little more like traditional tic-tac-toe */
+		
+
+		/* simple effect to clearly indicate cell about to be selected */
+		
+	</style>
+</head>
+<body>
+	<!-- table for game to live in -->
+	<table id="game">
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	
+	<!-- reset the game so we can play again -->
+	<button>restart</button>
+
+	<!-- game logic -->
+	<script>
+		var game = document.querySelector('table#game'),
+			player = 'X';
+
+
+		// a function to swap the current player. 
+		// so if current player is 'X' this makes it 'O'
+		function change_player(){
+			
+		}
+
+		// a function that takes an array of 3 cells, 
+		// and returns true if they all match each other, 
+		// and are not empty
+		function check_win(cell){
+			
+		}
+
+		// a function to create an array of 3 cells 
+		// for the up slopping diagonal
+		function diagonal_down(){
+			
+		}
+		// a function to create an array of 3 cells 
+		// for the down slopping diagonal
+		function diagonal_up(){
+			
+		}
+
+		// add an event listener (for click events) to each cell in the table.
+		// this has been done for you, but you'll have to write what to do 
+		// when a cell is clicked.
+		for(var i = 0, j = game.querySelectorAll('td').length; i < j; i++){
+			game.querySelectorAll('td')[i].addEventListener('click', function(){
+
+			});
+		}
+
+		// a function to clear all cells so we can play again
+		function reset(){
+			for(var i = 0, j = game.querySelectorAll('td').length; i < j; i++){
+				game.querySelectorAll('td')[i].innerHTML = '';
+			}
+		}
+
+		// some function calls to remember
+		// 
+		// check_row(game.querySelector('tr:nth-child(x)').querySelectorAll('td')); // rows
+		// check_row(game.querySelectorAll('tr td:nth-child(x)')); // cols
+
+	</script>
+</body>
+</html>

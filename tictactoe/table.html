@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TicTacToe</title>
+
+	<style>
+		/* set cells to same width x height to make grid */
+		table#game td {
+			width: 100px;
+			height: 100px;
+			border: 2px solid #444;
+			text-align: center;
+			font: normal 50px/1.5 "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+		}
+		
+		/* make it look a little more like traditional tic-tac-toe */
+		table#game tr:first-child td { border-top: none; }
+		table#game tr:last-child td { border-bottom: none; }
+		table#game tr td:first-child { border-left: none; }
+		table#game tr td:last-child { border-right: none; }
+
+		/* simple effect to clearly indicate cell about to be selected */
+		table#game td:hover { background: rgba(0, 0, 0, 0.1); }
+	</style>
+</head>
+<body>
+	<!-- table for game to live in -->
+	<table id="game">
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	
+	<!-- reset the game so we can play again -->
+	<button onclick="reset(); return false;">restart</button>
+
+	<!-- game logic -->
+	<script>
+		var game = document.querySelector('table#game'),
+			player = 'X';
+
+		// a function to swap the current player. 
+		// so if current player is 'X' this makes it 'O'
+		function change_player(){
+			if(player === 'X'){
+				player = 'O';
+			}
+			else {
+				player = 'X';
+			}
+		}
+
+		// a function that takes an array of 3 cells, 
+		// and returns true if they all match each other, 
+		// and are not empty
+		function check_win(cell){
+			return (((cell[0].innerHTML === cell[1].innerHTML) && (cell[1].innerHTML === cell[2].innerHTML)) && 
+				((cell[0].innerHTML !== '') && (cell[1].innerHTML !== '') && (cell[2].innerHTML !== '')));
+		}
+
+		// a function to create an array of 3 cells 
+		// for the up slopping diagonal
+		function diagonal_down(){
+			var cells = game.querySelectorAll('td');
+			return [cells[0], cells[4], cells[8]];
+		}
+		// a function to create an array of 3 cells 
+		// for the down slopping diagonal
+		function diagonal_up(){
+			var cells = game.querySelectorAll('td');
+			return [cells[6], cells[4], cells[2]];
+		}
+
+		// add an event listener (for click events) to each cell in the table.
+		// this has been done for you, but you'll have to write what to do 
+		// when a cell is clicked.
+		for(var i = 0, j = game.querySelectorAll('td').length; i < j; i++){
+			game.querySelectorAll('td')[i].addEventListener('click', function(){
+				if(this.innerHTML === ''){
+					// mark players choice
+					this.innerHTML = player;
+
+					// check for win horizontally
+					for(var i = 1; i < 4; i++){
+						check_win(game.querySelector('tr:nth-child('+i+')').querySelectorAll('td')) ? alert(player + ' wins!') : null;
+					}
+
+					// check for win vertically
+					for(var x = 1; x < 4; x++){
+						check_win(game.querySelectorAll('tr td:nth-child('+x+')')) ? alert(player + ' wins!') : null;
+					}
+
+					// check for win diagonally down
+					check_win(diagonal_down()) ? alert(player + ' wins!') : null;
+
+					// check for win diagonally up
+					check_win(diagonal_up()) ? alert(player + ' wins!') : null;
+
+					// change player
+					change_player();
+				}
+			});
+		}
+
+		// a function to clear all cells so we can play again
+		function reset(){
+			for(var i = 0, j = game.querySelectorAll('td').length; i < j; i++){
+				game.querySelectorAll('td')[i].innerHTML = '';
+			}
+		}
+
+		// some function calls to remember
+		// 
+		// check_row(game.querySelector('tr:nth-child(x)').querySelectorAll('td')); // rows
+		// check_row(game.querySelectorAll('tr td:nth-child(x)')); // cols
+
+	</script>
+</body>
+</html>
