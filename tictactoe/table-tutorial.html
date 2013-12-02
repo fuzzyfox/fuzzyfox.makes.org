@@ -132,11 +132,15 @@ table#game tr td:last-child { border-right: none; }</pre>
 
 		<p>In the example we changed the background color to a light grey.</p>
 	</section>
-
+	
 	<section>
 		<h1>Making a move</h1>
-		<p>So far we've used CSS to make the template code look a little more like like the game we know and love. Now we're going to start playing with some JavaScript to make this game work!</p>
-		<p>Down towards the bottom of the code, somewhere around line 54, is a function called <code>change_player</code>. A function in its simplest form is just a block of code which does something, that we can reuse later by using its name.</p>
+	</section>
+
+	<section>
+		<h1>Take turns</h1>
+		<p>On line 54 there is a function called <code>change_player</code>. A function in its simplest form is just a block of code which does something, that we can reuse later by using its name. In this case the thing we want it to do is change the player, which we can see on line 49 has been set to <code>'X'</code>.</p>
+		<p>There are only two players in TicTacToe, so we need to make this function change the player variable to <code>'O'</code> if it's <code>'X'</code>, and visa versa. We can do this with an <code>if(condition){}</code> statement.</p>
 	</section>
 </body>
 </html>
