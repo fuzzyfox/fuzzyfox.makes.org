@@ -78,7 +78,26 @@
 		// when a cell is clicked.
 		for(var i = 0, j = game.querySelectorAll('td').length; i < j; i++){
 			game.querySelectorAll('td')[i].addEventListener('click', function(){
+				// check if cell is empty before we do anything to it.
+				if(this.innerHTML === ''){
+					// mark players choice
+					
 
+					// check for a win horizontally
+					
+
+					// check for a win vertically
+					
+
+					// check for win diagonally down
+					
+
+					// check for win diagonally up
+					
+
+					// change player
+					
+				}
 			});
 		}
 
@@ -88,12 +107,6 @@
 				game.querySelectorAll('td')[i].innerHTML = '';
 			}
 		}
-
-		// some function calls to remember
-		// 
-		// check_row(game.querySelector('tr:nth-child(x)').querySelectorAll('td')); // rows
-		// check_row(game.querySelectorAll('tr td:nth-child(x)')); // cols
-
 	</script>
 </body>
 </html>
