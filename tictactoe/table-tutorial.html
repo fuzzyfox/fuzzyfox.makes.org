@@ -106,7 +106,7 @@
 		<hr>
 
 		<p>Remember how the preview looked? See if you can make your's look similar on line 16.</p>
-		<p><small><em><strong>Hint:</strong> use <code>:first&#8209;child</code> and/or <code>:last&#8209;child</code> selectors.</em></small></p>
+		<p><small><em><strong>Hint:</strong> use <code><a href="http://www.w3schools.com/cssref/sel_firstchild.asp">:first&#8209;child</a></code> and/or <code><a href="http://www.w3schools.com/cssref/sel_last-child.asp">:last&#8209;child</a></code> selectors.</em></small></p>
 		<div class="code-hint">
 			<a href="#cheat-1">CHEAT</a>
 			<code>
@@ -138,18 +138,18 @@ table#game tr td:last-child { border-right: none; }</pre>
 	<section>
 		<h1>Making a move</h1>
 		<p>So far we've used CSS to make the template code look a little more like like the game we know and love. Now we're going to start playing with some JavaScript to make this game work!</p>
-		<p>Right now if you click on a cell nothing happens... lets change that. On line 82 we can see that we're checking if the cell is empty using <code>this.innerHTML</code>. We can change the value of <code>this.innerHTML</code> like we can change the value of variables. We also have a variable called player (line 49), that knowns what the current player is. So lets make <code>this.innerHTML</code> equal <code>player</code>.</p>
+		<p>Right now if you click on a cell nothing happens... lets change that. On line 82 we can see that we're checking if the cell is empty using <code><a href="http://www.w3schools.com/jsref/prop_html_innerhtml.asp">this.innerHTML</a></code>. We can change the value of <code>this.innerHTML</code> like we can change the value of variables. We also have a variable called player (line 49), that knowns what the current player is. So lets make <code>this.innerHTML</code> equal <code>player</code>.</p>
 
 		<hr>
 		
-		<p><strong>Note:</strong> we're not going to dig into events in this tutorial, however its worth knowing that in this case <code>this</code> is a reference to the cell that the event listener on line 80 has been applied to.</p>
+		<p><strong>Note:</strong> we're not going to dig into events in this tutorial, however its worth knowing that in this case <code>this</code> is a reference to the cell that the <a href="http://www.w3schools.com/jsref/dom_obj_event.asp">event listener</a> on line 80 has been applied to.</p>
 	</section>
 
 	<section>
 		<h1>Take turns</h1>
 		<p>Now we can click on cells in the game, and mark them with an X, but what about the other player? O?</p>
 		<p>On line 54 there is a function called <code>change_player</code>. A function in its simplest form is just a block of code which does something, that we can reuse later by using its name. In this case the thing we want it to do is change the player, which we can see on line 49 has been set to <code>'X'</code>.</p>
-		<p>There are only two players in TicTacToe, so we need to make this function change the player variable to <code>'O'</code> if it's <code>'X'</code>, and visa versa. We can do this with an <code>if(condition){} else {}</code> statement.</p>
+		<p>There are only two players in TicTacToe, so we need to make this function change the player variable to <code>'O'</code> if it's <code>'X'</code>, and visa versa. We can do this with an <code><a href="http://www.w3schools.com/js/js_if_else.asp">if(condition){} else {}</a></code> statement.</p>
 
 		<div class="code-hint">
 			<a href="#code-hint-3">toggle hint</a>
