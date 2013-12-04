@@ -67,8 +67,14 @@
 		// and returns true if they all match each other, 
 		// and are not empty
 		function check_win(cell){
-			return (((cell[0].innerHTML === cell[1].innerHTML) && (cell[1].innerHTML === cell[2].innerHTML)) && 
-				((cell[0].innerHTML !== '') && (cell[1].innerHTML !== '') && (cell[2].innerHTML !== '')));
+			if(cell[0].innerHTML == cell[1].innerHTML){
+				if(cell[1].innerHTML == cell[2].innerHTML){
+					if(cell[0].innerHTML != ''){
+						return true;
+					}
+				}
+			}
+			return false;
 		}
 
 		// a function to create an array of 3 cells 

@@ -41,7 +41,7 @@
 	</table>
 	
 	<!-- reset the game so we can play again -->
-	<button>restart</button>
+	<button onclick="reset(); return false;">restart</button>
 
 	<!-- game logic -->
 	<script>
@@ -58,7 +58,7 @@
 		// a function that takes an array of 3 cells, 
 		// and returns true if they all match each other, 
 		// and are not empty
-		function check_win(cell){
+		function check_win(cells){
 			
 		}
 
@@ -83,20 +83,36 @@
 					// mark players choice
 					
 
-					// check for a win horizontally
-					
+					// check for win horizontally
+					for(var i = 1; i < 4; i++){
+						if(check_win(game.querySelector('tr:nth-child('+i+')').querySelectorAll('td'))){
+							alert(player + ' wins!');
+							reset();
+						}
+					}
 
-					// check for a win vertically
-					
+					// check for win vertically
+					for(var x = 1; x < 4; x++){
+						if(check_win(game.querySelectorAll('tr td:nth-child('+x+')'))){
+							alert(player + ' wins!');
+							reset();
+						}
+					}
 
 					// check for win diagonally down
-					
+					if(check_win(diagonal_down())){
+						alert(player + ' wins!');
+						reset();
+					}
 
 					// check for win diagonally up
-					
+					if(check_win(diagonal_up())){
+						alert(player + ' wins!');
+						reset();
+					}
 
 					// change player
-					
+
 				}
 			});
 		}

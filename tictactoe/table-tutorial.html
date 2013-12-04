@@ -72,9 +72,11 @@
 
 	<section>
 		<h1>TicTacToe</h1>
+		<p style="font-size:smaller"><strong>Difficulty:</strong> Intermediate</p>
 		<p>In this project we're going to go through the process of creating a simple game of TicTacToe with HTML, CSS, and JavaScript.</p>
 		<p>We'll use HTML and CSS to visualize the game, and JavaScript to control the logic (working out who wins / loses).</p>
-
+		
+      <p><em>Don't worry that the preview is blank right now... this is because we've got to write some code to make the game work. :)</em></p>
 		<hr>
 
 		<p>At the top of this tutorial section you'll see two buttons, use these to move forward and back through the tutorial.</p>
@@ -121,7 +123,7 @@ table#game tr td:last-child { border-right: none; }</pre>
 		<p>In CSS this can be done with the <code>:hover</code> selector. Try doing this on line 20.</p>
 		
 		<div class="code-hint">
-			<a href="#code-hint-3">toggle hint</a>
+			<a href="#code-hint-2">toggle hint</a>
 			<code>
 				<pre>table#game td:hover {
   /* rules to style the cell 
@@ -163,7 +165,7 @@ else {
 
 		<hr>
 
-		<p>Now this function is written we can make use of it in the rest of our code. Lets call it on line 99. You call a function like so:</p>
+		<p>Now this function is written we can make use of it in the rest of our code. Lets call it on line 115. You call a function like so:</p>
 		<code>
 			<pre>function_name();</pre>
 		</code>
@@ -171,18 +173,75 @@ else {
 
 	<section>
 		<!-- write check_win() -->
+		<h1>Starting to take shape</h1>
+		<p>We should now have something that resembles the game we know and love. But there's a problem, it doesn't know when we win!</p>
+		<p>We can start to fix this by taking a look at <code>check_win(cell)</code> on line 61. This function, as the comment above it indicates, should take an <a href="http://en.wikipedia.org/wiki/Array_programming">array</a> of 3 cells. Just the right number to check a row, column, or diagonal for a winning streak!</p>
+		<p>As with <code>change_player()</code> we can check that all three cells provided to us are the same using an <code>if(condition){}</code>statment. However there are 3 conditions we need to meet.</p>
+		<ul>
+			<li>If cell 0 is the same as cell 1.<br> <small>Computers count from 0 not 1</small></li>
+			<li>If cell 1 is the same as cell 2.<br> <small>If the first is true, and this is true, then we can assume all three are the same.</small></li>
+			<li>If cell 0 is <strong>not</strong> empty.<br> <small>If the above are true, then we know their all empty by checking only one of them.</small></li>
+		</ul>
+		<p>If any of these conditions are not true we want to <code>return false;</code>, but if their all true we can <code>return true;</code>.</p>
+
+		<hr>
+
+		<p>You can get the contents of a cell <small>(within the <code>check_win(cell)</code> function)</small> by using:</p>
+
+		<code><pre>cell[0].innerHTML</pre></code>
+
+		<p><strong>Note:</strong> the code above is for the first cell of three.</p>
+
+		<div class="code-hint">
+			<a href="#cheat-2">CHEAT</a>
+			<code>
+				<pre>if(cell[0].innerHTML == cell[1].innerHTML){
+  if(cell[1].innerHTML == cell[2].innerHTML){
+    if(cell[0].innerHTML != ''){
+      return true;
+    }
+  }
+}
+return false;</pre>
+			</code>
+		</div>
 	</section>
 
 	<section>
 		<!-- write diagnoals, first in detail, second not so -->
+		<h1>Almost done</h1>
+		<p>We're almost done... the game now checks for a win in the rows and columns after each move... but it needs to two more directions. The diagonals.</p>
+		<p>On line 88 and line 95 you can see that <code>check_win(cell)</code> is using some CSS code mixed in with the JavaScript. This method won't work for the diaganols, so we need to write some code that does this for us.</p>
+		<p>We're going to do this by getting all the cells in the game, and picking just the ones we want as an array. Lets go through how to do this for the first diagonal, then its up to you to work out the second.</p>
+
+		<hr>
+
+		<p>First we need to get all the cells in the game.</p>
+
+		<code>
+			<pre>var cells = game.<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element.querySelectorAll">querySelectorAll</a>('td');</pre>
+		</code>
+
+		<p>Next we want to create a new array of some specific cells and return it... in this case the first <small>(top left)</small>, fith <small>(center)</small>, and last <small>(bottom right)</small>. <strong>Remember:</strong> computers start counting at 0, not 1.</p>
+
+		<code>
+			<pre>return [cells[6], cells[4], cells[2]];</pre>
+		</code>
+
+		<p>Now its your turn... try and complete <code>diagonal_up()</code> by yourself. (line 72)</p>
 	</section>
 
 	<section>
-		<!-- impliment checks -->
-	</section>
+		<h1>It works! <small>Hopefully.</small></h1>
+		<p><strong>That's it.</strong> We should now have a working game of TicTacToe. If yours doesn't work maybe try comparing your code to the <a href="https://fuzzyfox.makes.org/thimble/tictactoe-table-version/remix">completed version</a> and work out where there are differences.</p>
 
-	<section>
-		<!-- summary -->
+		<h2>Feeling ready for a challenge?</h2>
+		<p>Right now there are some things that could be made better... if you're looking for a challenge see if you can fix these:</p>
+		<ul>
+			<li>There are some bits of repeating code that could become a function between line 86 and 112.</li>
+			<li>It might be nice to know what the current player is before a move is made.</li>
+			<li>Why not see if you can show the number of times each player wins?</li>
+		</ul>
 	</section>
 </body>
 </html>
