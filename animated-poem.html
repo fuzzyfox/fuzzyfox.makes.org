@@ -155,9 +155,12 @@ You can also share via http://code.org/api/hour/finish and receive a certificate
         // Get the list of animated elements on the page
         var animatedElements = document.getElementsByClassName('animated');
         
+        // Convert the NodeList of animated elements into an Array for easy use.
+        animatedElements = Array.prototype.slice.call(animatedElements);
+
         // Iterate through the list of animated elements on the page 
         // and assign a click event handler to each
-        Array.filter(animatedElements, function(element) {
+        animatedElements.forEach(function(element) {
           
           element.addEventListener('click', function() {
             
@@ -177,7 +180,7 @@ You can also share via http://code.org/api/hour/finish and receive a certificate
           
           // Iterate through the list of animated elements on the page
           // and add the "start" class
-          Array.filter(animatedElements, function(element) {
+          animatedElements.forEach(function(element) {
             element.classList.add('start');
           });
           
@@ -187,7 +190,7 @@ You can also share via http://code.org/api/hour/finish and receive a certificate
           
           // Iterate through the list of animated elements on the page
           // and remove the "start" class
-          Array.filter(animatedElements, function(element) {
+          animatedElements.forEach(function(element) {
             element.classList.remove('start');
           });
           
