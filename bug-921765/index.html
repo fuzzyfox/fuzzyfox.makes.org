@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <!-- This is the title of the webpage -->
+    <title>Remix of Your Presentation Poster</title>
+    
+  </head>
+  <body>
+    <div id="posterboard">
+
+      <h1 id="title">Your Presentation Poster</h1>
+      
+      <div class="multicolumn">
+        
+        <p>This is a poster on why red pandas are so awesome and cute.</p>
+  
+        <h2>At the Zoo</h2>
+        <p>There are many red pandas that live in zoos.</p>
+  
+        <img class="alignleft thumbnail" src="//farm5.staticflickr.com/4016/4441744445_97cfbf4519_b.jpg" alt="red panda sitting and looking down">
+        
+        <p>Normally, when in zoos, red pandas are kept in large green spaces with lots of bushes and trees. Some red pandas really like to climb up into the trees to nap. They don't eat the tree leaves, but get fed bamboo leaves and fruits by the zookeepers.</p>
+        
+        <h3>Toronto Zoo</h3>
+        <p>At the Toronzo Zoo, they live across the path from the new giant panda enclosure. Mozilla even had an outing to see them before the area was closed to create the panda area.</p>
+        
+        <h2>Did you know?</h2>  
+        <p>Red pandas sleep a lot. They move almost as little as sloths! During the day, they sleep on tree branches or in tree hollows.<sup>1</sup> A new thing I learned!</p>
+        
+        <iframe width="560" height="315" src="//www.youtube.com/embed/y6GaPkkGZGw" frameborder="0" allowfullscreen></iframe>
+        
+        <p>Red pandas do love to play when they are active as you can see in the video. They are especially playful when they are young.</p>
+        <p>Even though in the video you saw them playing in the snow, they usually live in places with mild temperatures in forested mountain areas.</p>
+  
+        <h2>More Images</h2>
+  
+        <figure class="alignright">
+          <img class="thumbnail" src="http://cdn.memegenerator.net/instances/400x/30003386.jpg" alt="meme of red panda eating banana with YOLO MOZFEST written at the bottom">
+            <figcaption>Create red panda memes with the Meme generator<sup>2</sup>.</figcaption>
+        </figure>
+        
+        <p>The meme was created by an attendee at Moz<wbr>Fest 2012, where this project was originally inspired and created.</p>
+        <p>It doesn't seem to make sense, but that seemed to be the point.</p>
+        
+        <div class="workscited">
+          
+          <h3>Works Cited &amp; Credits</h3>
+          <ol>
+            <li>"Red Panda". <a href="http://en.wikipedia.org/wiki/Red_panda">http://en.wikipedia.org/wiki/Red_panda</a>.</li>
+            <li>Meme Generator. <a href="http://memegenerator.net">http://memegenerator.net</a>.</li>
+          </ol>
+          <p>Background Image: De Vido, Roberto. "Young bamboo." <a href="http://www.flickr.com/photos/bigocean/7393517890/">Flickr</a></p>
+          <p>First image: amandarichard421 "Red Panda." <a href="http://www.flickr.com/photos/mndapnda421/4441744445/">Flickr</a></p>
+          
+        </div><!-- closes the workscited div -->
+        
+      </div><!-- closes the multicolumn div -->
+      
+      <footer>Your Name <a href="http://twitter.com/username/">@twitterHandle</a> - Today's Date - Made using <a href="http://thimble.webmaker.org">Mozilla Thimble</a></footer>
+    </div><!-- closes the posterboard div -->
+    
+	<!-- Google Web Fonts link -->
+	<link href='//fonts.googleapis.com/css?family=Snippet' rel='stylesheet' type='text/css'>
+
+    <style>
+
+      /* Basic styles for the page */
+      body {
+        color: white; /* main text color */
+        background-color: #006400; /* "backup" color in case the image doesn't load */
+        background-image: url('//farm8.staticflickr.com/7091/7393517890_9c8678b04e_k.jpg');
+      }
+      a, a:visited {
+        color: powderblue; /* link color */
+      }
+      a:active, a:hover {
+        color: skyblue; /* link color when your mouse moves over it or you click on it */
+      }
+      h2, h3, h4, h5, h6 {
+        margin-bottom: 0;
+      }
+
+      /* Style for the Poster Board */
+      #posterboard {
+        width: 960px; /* width of your poster board */
+        background-color: rgba(0, 100, 0, .9); /* color of poster board */
+        margin: 0 auto;
+        padding: 2em 1em;
+      }
+      
+      /* Style for the Poster Title */
+      #title {
+        font-family: 'Snippet', sans-serif;
+        color: orange; /* color of the title text */
+        font-size: 2em; /* text size of the title */
+        border: 1px solid orange; /* border thickness, style, and color */
+        
+        text-align: center;
+        margin: 0;
+        padding: 0.5em;
+      }
+      
+      /* Style for column layout */
+      .multicolumn {
+        -webkit-columns: 3; /* Change the number of columns */
+        -moz-columns: 3; /* do it here too */
+        columns: 3; /* and here again! */
+        
+        padding: 1em 0.5em;
+      }
+
+      /* Styles for images and captions */
+      img {
+        max-width: 97.5%;
+      }
+      iframe {
+        max-width: 98%;
+        height: auto;
+      }
+      figure {
+        margin: 0;
+        padding: 0;
+      }
+      figcaption {
+        max-width: 97.5%;
+        color: orange; /* caption text color */
+      }
+      .alignleft {
+        display: inline;
+        float: left;
+        margin: 0.5em 1.625em 0.5em 0;
+      }
+      .aligncenter {
+        display: block;
+        margin: 0.5em auto;
+      }
+      .alignright {
+        display: inline;
+        float: right;
+        margin: 0.5em 0 0.5em 1.625em;
+      }
+      .thumbnail { /* sets the maximum size of thumbnail images */
+        max-width: 150px;
+        max-height: 150px;
+      }
+      .thumbnail + figcaption {
+        max-width: 150px; /* set this to be the same as the thunbnail max-width */
+      }
+      
+      /* Styles for the Works Cited section */
+      .workscited {
+        clear: both;
+      }
+      .workscited {
+        font-size: 75%;
+      }
+      .workscited ol {
+        padding-left: 1.5em;
+      }
+      .workscited li + li {
+        margin-top: 1em;
+      }
+      
+      /* Styles for the footer */
+      footer {
+        border: 1px solid #97AEC9;
+        font-size: 90%;
+        clear: both;
+        padding: 0.5em;
+      }
+
+      /* Styles for manual columns */
+      .column {
+        padding: 1em 2%;
+        float: left;
+      }
+      .full {
+        width: 95.5%;
+      }
+      .half {
+        width: 45.5%;
+      }
+      .twothirds {
+        width: 61.5%;
+      }
+      .onethird {
+        width: 28.9%;
+      }
+      .quarter {
+        width: 20.5%;
+      }
+    </style>
+
+  </body>
+</html>
