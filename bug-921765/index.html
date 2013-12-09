@@ -28,7 +28,9 @@
         <h2>Did you know?</h2>  
         <p>Red pandas sleep a lot. They move almost as little as sloths! During the day, they sleep on tree branches or in tree hollows.<sup>1</sup> A new thing I learned!</p>
         
-        <iframe width="560" height="315" src="//www.youtube.com/embed/y6GaPkkGZGw" frameborder="0" allowfullscreen></iframe>
+        <div class="video-container">
+          <iframe width="560" height="315" src="//www.youtube.com/embed/y6GaPkkGZGw" frameborder="0" allowfullscreen></iframe>
+        </div>
         
         <p>Red pandas do love to play when they are active as you can see in the video. They are especially playful when they are young.</p>
         <p>Even though in the video you saw them playing in the snow, they usually live in places with mild temperatures in forested mountain areas.</p>
@@ -60,19 +62,26 @@
       <footer>Your Name <a href="http://twitter.com/username/">@twitterHandle</a> - Today's Date - Made using <a href="http://thimble.webmaker.org">Mozilla Thimble</a></footer>
     </div><!-- closes the posterboard div -->
     
-	<!-- Google Web Fonts link -->
-	<link href='//fonts.googleapis.com/css?family=Snippet' rel='stylesheet' type='text/css'>
+  <!-- Google Web Fonts link -->
+  <link href='//fonts.googleapis.com/css?family=Snippet' rel='stylesheet' type='text/css'>
 
     <style>
+      html {
+        min-height: 100%;
+      }
 
       /* Basic styles for the page */
       body {
         color: white; /* main text color */
-        background-color: #006400; /* "backup" color in case the image doesn't load */
-        background-image: url('//farm8.staticflickr.com/7091/7393517890_9c8678b04e_k.jpg');
+        background-color: #3FB58E;
+        background-image:  url('//farm8.staticflickr.com/7091/7393517890_9c8678b04e_k.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        font-size: 16px;
       }
       a, a:visited {
-        color: powderblue; /* link color */
+        color: #E3EAEE; /* link color */
       }
       a:active, a:hover {
         color: skyblue; /* link color when your mouse moves over it or you click on it */
@@ -80,22 +89,28 @@
       h2, h3, h4, h5, h6 {
         margin-bottom: 0;
       }
+      h2 {
+        font-size: 1.4em;
+      }
+      p {
+        margin: 0 auto 16px;
+      }
 
       /* Style for the Poster Board */
       #posterboard {
         width: 960px; /* width of your poster board */
-        background-color: rgba(0, 100, 0, .9); /* color of poster board */
+        background-color: rgba(50, 143, 112, 0.975); /* color of poster board */
         margin: 0 auto;
         padding: 2em 1em;
+        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.75)
       }
       
       /* Style for the Poster Title */
       #title {
         font-family: 'Snippet', sans-serif;
-        color: orange; /* color of the title text */
-        font-size: 2em; /* text size of the title */
-        border: 1px solid orange; /* border thickness, style, and color */
-        
+        color: white; /* color of the title text */
+        font-size: 2.4em; /* text size of the title */
+        border: 1px solid #E3EAEE; /* border thickness, style, and color */
         text-align: center;
         margin: 0;
         padding: 0.5em;
@@ -112,19 +127,32 @@
 
       /* Styles for images and captions */
       img {
-        max-width: 97.5%;
+        max-width: 100%;
+        border: 0.4em solid white;
       }
-      iframe {
-        max-width: 98%;
-        height: auto;
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 30px; height: 0; overflow: hidden;
+      }
+      .video-container iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
       }
       figure {
         margin: 0;
         padding: 0;
+        background: white;
+        padding: 0.4em;
+      }
+      figure > img {
+        border: none;
       }
       figcaption {
-        max-width: 97.5%;
-        color: orange; /* caption text color */
+        color: #4D4E53; /* caption text color */
       }
       .alignleft {
         display: inline;
@@ -153,21 +181,18 @@
         clear: both;
       }
       .workscited {
-        font-size: 75%;
+        font-size: 0.75em;
       }
       .workscited ol {
         padding-left: 1.5em;
       }
-      .workscited li + li {
-        margin-top: 1em;
-      }
       
       /* Styles for the footer */
       footer {
-        border: 1px solid #97AEC9;
-        font-size: 90%;
+        border-top: 1px solid #E3EAEE;
+        font-size: 0.7em;
         clear: both;
-        padding: 0.5em;
+        padding: 0.5em 0 0 0;
       }
 
       /* Styles for manual columns */
@@ -190,6 +215,7 @@
       .quarter {
         width: 20.5%;
       }
+    
     </style>
 
   </body>
