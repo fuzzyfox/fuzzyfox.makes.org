@@ -8,28 +8,104 @@
     <!-- these scripts turn your make into a tutorial -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//thimble.webmaker.org/learning_projects/tutorial/tutorial.js"></script>
+    
+    <link rel="stylesheet" href="//yandex.st/highlightjs/7.5/styles/default.min.css">
+    <script src="//yandex.st/highlightjs/7.5/highlight.min.js"></script>
+    
     <script>
       jQuery(document).ready(function($){
-        $('body').tutorial();
+        // $('body').tutorial();
+        $('pre > code').each(function(i, e) {hljs.highlightBlock(e)});
+
+        $('.code-hint a').click(function(e){
+          $(this).parent().find('pre').toggle();
+          return false;
+        });
       });
     </script>
+
+    <style>
+      .code-hint {
+        background: #eee;
+        padding: 4px;
+      }
+      .code-hint > a {
+        display: block;
+        font-style: italic;
+        font-size: smaller;
+      }
+      .code-hint > pre {
+        display: none;
+      }
+      pre > code { 
+        font-weight: normal;
+        max-width: 100%;
+        overflow-x: auto;
+      }
+      span.timestamp { font-family: monospace; }
+    </style>
   </head>
   <body>
 
     <section>
       <!-- Introduction (focus is the js) -->
+      <h1>Lorem ipsum dolor sit amet.</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, sunt libero similique ex magnam dolores quisquam modi nobis delectus tempore aperiam corporis nesciunt repellendus cupiditate animi molestiae reiciendis a voluptate.</p>
+      <p>Voluptatem, vitae, doloribus nesciunt reprehenderit non expedita cupiditate ipsum totam tempore facilis provident repellat sit praesentium porro architecto veritatis corrupti maiores nemo nulla quas voluptatibus excepturi earum exercitationem commodi itaque.</p>
     </section>
 
     <section>
-      <!-- explination of DOMContentLoaded and why it is -->
+      <!-- Introduction to the main components -->
+      <h2>Lorem ipsum dolor sit amet.</h2>
+      <p>For this project most of our JavaScript is going to be written inside the <code>setInterval(function(){...}, interval);</code> function call on line 81.</p>
+
+      <p>The <code><a href="https://developer.mozilla.org/docs/Web/API/Window.setInterval">setInterval()</a></code> method calls a function at specified intervals. It does this repeatedly until either the <code><a href="https://developer.mozilla.org/docs/DOM/window.clearInterval">clearInterval()</a></code> method is called or the page is closed.</p>
+
+      <p><small>For this project we're not going to worry about <code>clearInterval()</code></small></p>
+
+      <p>We'll also be using the <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date">Date()</a></code> object (line 83), which represents a single moment in time. This too, like the <code>setInterval()</code> method, uses milliseconds to measure time.</p>
+
+      <p>To represent the time now it measures the number of milliseconds since January 1<sup>st</sup> 1970 UTC.</p>
+
+      <p class="example">Right now its been <span class="timestamp">0000000000000</span> milliseconds since January 1<sup>st</sup> 1970 UTC.</p>
+
+      <div class="code-hint">
+        <a href="#">See how that timer works</a>
+        <pre><code class="language-html">&lt;span class="timestamp"&gt;0000000000000&lt;/span&gt;
+&lt;script&gt;
+setInterval(function(){
+  document.querySelector('.timestamp').innerHTML = Date.now();
+}, <strong>1</strong>);
+&lt;/script&gt;</code></pre>
+      </div>
     </section>
 
     <section>
       <!-- make the clock show time on load -->
-    </section>
+      <p>Time to make the clock show us the correct time! Right now it just shows a bunch of zeros which isn't very useful.</p>
+      
+      <p>The code to show the time has already been written but its not updating... This is because our <code>setInterval()</code> method hasn't been told how often to update. Lets fix that by changing <code>interval</code> on line 121 so that our clock is updated once a second.</p>
 
-    <section>
-      <!-- make the clock tick, explain setInterval -->
+      <p><small><strong>Hint:</strong> 1 second = 1000 milliseconds</small></p>
+      
+      <hr>
+
+      <p>Line 86 to line 104 shows one way to get the time... however its a little long, and there's a much better way to do it.</p>
+      
+      <p>This method does however show that it is possilbe to get just the number of hours, minutes, or seconds in the current time. This can be useful if we want to know only what the hour is for example <small>(that would be <span class="currentHour">0</span>)</small>.</p>
+
+      <p>We can delete line 85 to line 102 if we change line 104 to make use of the <code>toLocaleTimeString()</code> method of <code>Date()</code>.</p>
+
+      <p>On line 83 we get a new "<a href="https://wikipedia.org/wiki/Instance_(computer_science)">instance</a>" of the <code>Date()</code> object, and "<a href="https://en.wikipedia.org/wiki/Assignment_(computer_science)">assign</a>" this instance to the variable <code>date</code>. It's on this instance we can use the <code>toLocaleTimeString()</code> method.</p>
+
+      <p>Try changing your code on line 104 to use the <code>toLocaleTimeString()</code> method of instead of the long method it does at the moment</p>
+      
+      <div class="code-hint">
+        <a href="#">CHEAT</a>
+        <pre><code class="language-javascript">// make line 104 the below
+time.innerHTML = date.toLocaleTimeString();</code></pre>
+      </div>
+    </section>
     </section>
 
     <section>
@@ -43,5 +119,28 @@
     <section>
       <!-- finish w/ challenge to make a countdown clock w/ setInterval -->
     </section>
+
+    <script>
+      window.requestAnimationFrame = (function(){
+        return  window.requestAnimationFrame       ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame    ||
+                function( callback ){
+                  window.setTimeout(callback, 1000 / 60);
+                };
+      })();
+
+
+      (function friendlyTimeLoop(){
+        Array.prototype.filter.call(document.querySelectorAll('span.timestamp'), function(element){
+          element.innerHTML = Date.now();
+        });
+
+        var date = new Date();
+        document.querySelector('span.currentHour').innerHTML = date.getHours();
+        
+        requestAnimationFrame(friendlyTimeLoop);
+      })();
+    </script>
   </body>
 </html>

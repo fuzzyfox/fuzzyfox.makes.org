@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Time</title>
+	<link rel="stylesheet" href="//people.mozilla.org/~williamd/assets/css/animations.css">
+	<style>
+		html {
+			background: #4D4E53;
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			width: 70%;
+			background: white;
+			color: #4D4E53;
+			font: 32px/1.5 'Open Sans', Helvetica, Arial, Sans-Serif;
+			padding: 2em;
+			margin: 10% auto;
+			transition: background 1s ease;
+		}
+
+		body.alarm {
+			background: tomato;
+			color: white;
+		}
+
+		time {
+			display: block;
+			text-align: center;
+			font-size: 2em;
+			font-weight: 300;
+			margin: 1em auto;
+		}
+		
+		#setAlarm {
+			text-align: right;
+		}
+
+		input {
+			font: inherit;
+			color: inherit;
+			background: inherit;
+			border: none;
+			border-bottom: 1px solid #4D4E53;
+			width: 4em;
+		}
+		input:invalid {
+			box-shadow: none;
+			background: tomato;
+			color: white;
+		}
+		.alarm input {
+			border-bottom-color: white;
+		}
+
+		.alarm input:invalid {
+			box-shadow: none;
+			background: white;
+			color: tomato;
+		}
+	</style>
+</head>
+<body>
+	The time is...
+	
+	<time>00:00:00</time>
+	
+	<div id="setAlarm">
+		...set alarm for <input type="text" placeholder="00:00:00">
+	</div>
+
+	<script>
+		// Lets get the time element for quick use...
+		var time = document.querySelector('time');
+		// ...and while we're at it lets get the input for the alarm
+		var alarm = document.querySelector('#setAlarm > input');
+
+		// We want the clock to "tick" so lets do something every 1000 milliseconds (1 second)
+		setInterval(function(){
+			// get a new instance of the Date so we can get the current time.
+			var date = new Date();
+
+			// format the current time to something readable.
+			var currentTime = '';
+			if(date.getHours() >= 10) {
+				currentTime += date.getHours() + ':';
+			} else {
+				currentTime += '0' + date.getHours() + ':';
+			}
+			if(date.getMinutes() >= 10) {
+				currentTime += date.getMinutes() + ':';
+			} else {
+				currentTime += '0' + date.getMinutes() + ':';
+			}
+			if(date.getSeconds() >= 10) {
+				currentTime += date.getSeconds();
+			} else {
+				currentTime += '0' + date.getSeconds();
+			}
+
+			// show the current time
+			time.innerHTML = date.toLocaleTimeString();
+
+			// visual alarm
+			// convert the input into a special number
+			
+
+			// check there is a time set, that its in the right format, and see if its been and gone.
+			if(something){
+				
+			}
+			// we don't need to be showing the alarm... make sure we dont
+			else {
+				
+			}
+
+			// set current time into #setAlarm placeholder
+			
+		}, 1000);
+	</script>
+</body>
+</html>
