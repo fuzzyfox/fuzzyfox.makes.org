@@ -68,7 +68,7 @@
 	<time>00:00:00</time>
 	
 	<div id="setAlarm">
-		...set alarm for <input type="text" placeholder="00:00:00">
+		...set alarm for <input type="text" placeholder="00:00:00" value="">
 	</div>
 
 	<script>
@@ -101,7 +101,7 @@
 			}
 
 			// show the current time
-			time.innerHTML = date.toLocaleTimeString();
+			time.innerHTML = currentTime;
 
 			// visual alarm
 			// convert the input into a special number
@@ -118,7 +118,7 @@
 
 			// set current time into #setAlarm placeholder
 			
-		}, 1000);
+		}, interval);
 	</script>
 </body>
 </html>

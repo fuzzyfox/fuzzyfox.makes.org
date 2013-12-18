@@ -34,13 +34,18 @@
         font-style: italic;
         font-size: smaller;
       }
-      .code-hint > pre {
-        display: none;
-      }
+      .code-hint > pre { display: none; }
       pre > code { 
         font-weight: normal;
         max-width: 100%;
         overflow-x: auto;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+      }
+      hr {
+        background: #ccc;
+        border: none;
+        height: 1px;
       }
       span.timestamp { font-family: monospace; }
     </style>
@@ -106,14 +111,36 @@ setInterval(function(){
 time.innerHTML = date.toLocaleTimeString();</code></pre>
       </div>
     </section>
-    </section>
 
     <section>
       <!-- convert input into Date object -->
+      <p>Now we have a clock that tells us the current time we can start thinking about turning this into an alarm. Which means we need to get a time from the user, and check if the current time is before or after.</p>
+
+      <p>To do this we need to convert the time given into us into a number much like we saw earlier <small>(Remember this: <span class="timestamp">0000000000000</span>)</small>, but we need more than just the time to do this. The <code>Date()</code> object has a <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date/parse">parse()</a></code> method we can use but it requires a full date time, not just the time.</p>
+
+      <p>We're going to make our alarm a very basic way, that means it is going to work only if the time is on the same day.</p>
+
+      <p>When someone enters a time into our project <small>(in the bottom right corner)</small>, we can find out what its value is by checking <code>alarm.value</code>. This is because on line 78 we've already assigned a variable to access information about it.</p>
+
+      <p>To turn our time into a full date time we can simply put the current date infront of the time we were given like so:</p>
+
+      <pre><code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString">date.toDateString()</a> + ' ' + alarm.value</code></pre>
+
+      <p>Why don't you use this with <code>Date.parse()</code> to create a variable called <code>alarmTime</code> on line 108.</p>
+
+      <p><small><strong>Note:</strong> <code>Date.parse()</code> gives us the number of milliseconds since January 1<sup>st</sup> 1970</small></p>
+
+      <div class="code-hint">
+        <a href="#">CHEAT</a>
+        <pre><code class="language-javascript">var alarmTime = Date.parse(date.toDateString() + ' ' + alarm.value);</code></pre>
+      </div>
     </section>
 
     <section>
       <!-- check if the alarm should be going off and make it so -->
+      <p>Next up we need to check if the current time is before or after the time we were given, but we need to do it with the current time being a number like we now have stored in the <code>alarmTime</code> variable.</p>
+
+      <p>Change "<code>something</code>" on line 111 to check if the time now is less than (<strong>&lt;</strong>) the <code>alarmTime</code></p>
     </section>
 
     <section>
