@@ -14,7 +14,7 @@
     
     <script>
       jQuery(document).ready(function($){
-        // $('body').tutorial();
+        $('body').tutorial();
         $('pre > code').each(function(i, e) {hljs.highlightBlock(e)});
 
         $('.code-hint a').click(function(e){
@@ -51,17 +51,10 @@
     </style>
   </head>
   <body>
-
-    <section>
-      <!-- Introduction (focus is the js) -->
-      <h1>Lorem ipsum dolor sit amet.</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, sunt libero similique ex magnam dolores quisquam modi nobis delectus tempore aperiam corporis nesciunt repellendus cupiditate animi molestiae reiciendis a voluptate.</p>
-      <p>Voluptatem, vitae, doloribus nesciunt reprehenderit non expedita cupiditate ipsum totam tempore facilis provident repellat sit praesentium porro architecto veritatis corrupti maiores nemo nulla quas voluptatibus excepturi earum exercitationem commodi itaque.</p>
-    </section>
-
     <section>
       <!-- Introduction to the main components -->
-      <h2>Lorem ipsum dolor sit amet.</h2>
+      <h2>Making a slient alarm</h2>
+      <p><small><strong>Note:</strong> This project is going to focus entirely on the JavaScript, and assumes an understanding of HTML and CSS.</small></p>
       <p>For this project most of our JavaScript is going to be written inside the <code>setInterval(function(){...}, interval);</code> function call on line 81.</p>
 
       <p>The <code><a href="https://developer.mozilla.org/docs/Web/API/Window.setInterval">setInterval()</a></code> method calls a function at specified intervals. It does this repeatedly until either the <code><a href="https://developer.mozilla.org/docs/DOM/window.clearInterval">clearInterval()</a></code> method is called or the page is closed.</p>
@@ -140,11 +133,25 @@ time.innerHTML = date.toLocaleTimeString();</code></pre>
       <!-- check if the alarm should be going off and make it so -->
       <p>Next up we need to check if the current time is before or after the time we were given, but we need to do it with the current time being a number like we now have stored in the <code>alarmTime</code> variable.</p>
 
-      <p>Change "<code>something</code>" on line 111 to check if the time now is less than (<strong>&lt;</strong>) the <code>alarmTime</code></p>
-    </section>
+      <p>Change "<code>something</code>" on line 111 to check if there is an alarm time given to us, and the time now is less than (<strong>&lt;</strong>) the <code>alarmTime</code></p>
 
-    <section>
-      <!-- finish w/ challenge to make a countdown clock w/ setInterval -->
+      <p><strong>Tip:</strong> you can check for multiple things a single <code>if(){}</code> statement. For example:</p>
+      
+      <pre><code class="language-javascript">if((1 < 2) && ("a" == "b")){
+  // do something
+}</code></pre>
+      
+      <hr>
+
+      <p>Once we know if we should be showing the alarm or not we need to make it happen. In this project there is some CSS to control this, and we can make use of it by adding the classes "alarm" and "pulse" to the <code>&lt;body&gt;</code>.</p>
+
+      <p>This can be done using the below on line 112.</p>
+
+      <pre><code class="language-javascript">document.body.classList.add('alarm', 'pulse');</code></pre>
+
+      <p>This selects the <code>&lt;body&gt;</code> tag (<small><code>document.body</code></small>) then uses the <code><a href="https://developer.mozilla.org/docs/Web/API/Element.classList">classList</a></code> to add both classes to the body.</p>
+
+      <p>On line 116 see if you can work out what code is needed to remove these classes, so that if the time given to us is changed the alarm can be reset.</p>
     </section>
 
     <script>
