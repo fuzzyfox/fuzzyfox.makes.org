@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Approval Grid</title>
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<style>
+		html { height: 100%; }
+		body {
+			background: white url(//upload.wikimedia.org/wikipedia/commons/7/7c/Lightblue_empty_grid.svg) center center;
+			background-size: cover;
+			height: 100%;
+			width: 100%;
+       		min-width: 900px;
+        	min-height: 900px;
+			position: relative;
+			color: #444;
+			font: 12px/1.4 'Fira Sans', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, Sans-Serif;
+			padding: 0;
+			margin: 0;
+		}
+
+		/* draw axis w/ css */
+		body::after {
+			content: " ";
+			border-right: 2px solid #444;
+			width: 50%;
+			height: 100%;
+			display: block;
+			position: absolute;
+			left: 0;
+			z-index: -1;
+		}
+		body::before {
+			content: " ";
+			border-bottom: 2px solid #444;
+			width: 100%;
+			height: 50%;
+			display: block;
+			position: absolute;
+			top: 0;
+			z-index: -1;
+		}
+		
+		/* do what you want w/ items :D the JS
+		at the bottom will position them based on 
+		their bottom left corner*/
+		.item {
+			display: block;
+			position: absolute;
+		}
+		.item::after {
+			content: "•";
+			position: absolute;
+			top: -0.4em;
+			left: -0.4em;
+			font-weight: 700;
+			font-size: 2em;
+		}
+		
+		/* the JS at the bottom will position labels based 
+		on their center */
+		.label {
+			background: white;
+			padding: 1em;
+			border: 1px solid #444;
+		}
+		.label::after {
+			content: "";
+		}
+
+		.rotate90 {
+			transform: rotate(90deg);
+		}
+		.rotate270 {
+			transform: rotate(270deg);
+		}
+
+		/* css for your items */
+		#amira {
+			width: 250px;
+		}
+		#amira > img {
+			max-height: 5em;
+			border-radius: 100%;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<section id="items">
+		<div class="item" data-x="23" data-y="23" id="amira">
+			<img src="//webmaker.org/img/eoy/eoy-3.jpg" alt="amira">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, sed!</p>
+		</div>
+		<div class="item" data-x="83" data-y="83">Error, nostrum quis exercitationem.</div>
+		<div class="item" data-x="23" data-y="83">Suscipit, pariatur fugit cum.</div>
+		<div class="item" data-x="83" data-y="23">Quas, enim voluptatem deserunt.</div>
+	</section>
+
+	<section id="labels">
+		<div class="item label" data-x="50" data-y="95">Highbrow</div>
+		<div class="item label" data-x="50" data-y="5">Lowbrow</div>
+		<div class="item label" data-x="50" data-y="50">(50, 50)</div>
+		<div class="item label rotate90" data-y="50" data-x="97.5">Brilliant</div>
+		<div class="item label rotate270" data-y="50" data-x="2.5">Despicable</div>
+	</section>
+	<script>
+		var items = document.querySelectorAll('.item');
+
+		Array.prototype.filter.call(items, function(element){
+			element.style.bottom = element.dataset.y + '%';
+			element.style.left = element.dataset.x + '%';
+
+			if(element.classList.contains('label')){
+				element.style.marginLeft = (-1 * (element.offsetWidth / 2)) + 'px';
+				element.style.marginBottom = (-1 * (element.offsetHeight / 2)) + 'px';
+			}
+		});
+	</script>
+</body>
+</html>
