@@ -66,17 +66,21 @@
 			color: white;
 			opacity: 1;
 			padding: 10px 20px;
-			/*float: left;*/
 		}
+		#cta h1 {
+			font-size: 20px;
+			margin-top: 0;
+		}
+
 
 		#preview {
 			width: 720px;
 			height: 720px;
-			/*float: left;*/
 			border: none;
 			margin: 0;
 			padding: 0;
 			display: block;
+			background: white;
 
 			-webkit-transform: scale(0.666666);
 			-moz-transform: scale(0.666666);
@@ -98,8 +102,11 @@
 	<iframe src="https://fuzzyfox.makes.org/thimble/the-web-i-want_" frameborder="0" id="preview" class="msnry"></iframe>
 	
 	<div id="cta" class="msnry">
-		<h1>CTA Block</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, doloremque, voluptatem, recusandae molestias eligendi obcaecati blanditiis libero ab error laudantium quod aliquid animi facilis repellendus optio consectetur accusamus ipsa id?</p>
+		<h1>Happy 25th Birthday, World Wide Web!</h1>
+		<p>We're  celebrating the web -- a shared act of human collaboration across an open platform that Mozilla believes is essential to individual growth and our collective future.</p>
+		<p>Today, the web matters more than ever. It's a key component in education, communication, collaboration, business, entertainment and society as a whole. But threats to our online security and privacy are hindering our ability to shape our own experiences on the Web.</p>
+		<p>Let's take a moment to envision the web we want. How could it be safer, more open and more accessible?</p>
+		<p><strong>Remix this page and join a global community of people envisioning the Web We Want.</strong></p>
 	</div>
 	
 	<ul id="thumbnails"></ul>
@@ -136,7 +143,7 @@
 			// check if tags specified and turn into array if so
 			if(query.tags) { query.tags = query.tags.split(','); }
 			// if no tags default to webwewant tag
-			var searchTags = query.tags || ['webwewant'];
+			var searchTags = query.tags || ['webwewant', 'supportopen'];
 			
 			// number of makes to display
 			var numMakes = 0;
@@ -147,7 +154,7 @@
 			makeapi
 				.tags({
 					tags: searchTags,
-					execution: query.execution || 'and'
+					execution: query.execution || 'or'
 				})
 				.sortByField('updatedAt', 'desc')
 				.limit(query.limit || 100)
