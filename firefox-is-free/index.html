@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- name this make! -->
+  <title>Firefox is Free: Learn about your web browser</title>
+
+  <!-- stylizing -->
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+  <style>
+  body {
+    background-color: #E66000;
+    background-image: url('//people.mozilla.org/~williamd/assets/img/ffdownload-bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .container {
+    background-color: white;
+    color:#4d4e53;
+    font: 22.5px/1.2 "Fira", "Open Sans", "Helvetica Neue", Helvetica Arial, Sans-Serif;
+    max-width: 700px;
+    min-width: 200px;
+    padding: 45px;
+    margin: 3em auto;
+    position: relative;
+  }
+  .container::after {
+    content: "";
+    position: absolute;
+    bottom: -1.99em;
+    right: 2em;
+    width: 0;
+    height: 0;
+    border-left: 2em solid transparent;
+    border-right: 2em solid transparent;
+    border-top: 2em solid white; /*needs to be the same as .container's background color*/
+  }
+  /* remove arrow from last container */
+  .container:last-of-type::after {
+    border:none;
+  }
+  .container a {
+    color:#E66000;
+    text-decoration: none;
+  }
+  .container a:hover { text-decoration: underline; }
+
+  .container p {
+    margin: 0 0 0 10px;
+    font-weight: 300;
+  }
+  .light {
+    font-weight: 300;
+  }
+  .container ul {
+    margin: 0 0 0 10px;
+    font-weight: 300;
+  }
+  .container .huge { margin: 10px 0; }
+  .responsive-img {
+    margin: 1em 0;
+    width:100%;
+  }
+  .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    margin: 1em 0;
+    height: 0;
+  }
+  .videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  video {
+    width: 100%    !important;
+    height: auto   !important;
+  }
+  .make-bar-button{
+	margin-top:2px;
+	color:white;
+	background:#3fb58e;
+	list-style:none;
+	float:left;
+	font-size:13px;
+	text-align:center;
+	border:1px solid #FFF;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box
+  }
+  
+  .make-bar-button a{
+    color:#FFF;
+    padding:.4em 1em .4em
+  }
+  
+  .make-bar-button:hover{
+    background:#60c7a5
+  }
+  .make-bar-button-remix{
+	background-repeat:no-repeat;
+	background-position:left 3px;
+	display:block;
+	margin-left:5px;
+	margin-top:2px
+  }
+  
+  .make-bar-button-remix span{
+    position:relative;
+    bottom:2px;
+    left:5px
+  }
+  
+  .make-bar-button-remix{
+    background-image:url("https://fuzzyfox.makes.org/static/images/icon-Remix.png")
+  }
+    p:not(:last-child) {
+      margin-bottom: 0.7em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="huge">
+      <h1>Firefox is Free</h1>
+      <em class="light">Learn about your web browser</em>
+    </div>
+  </div>
+
+  <div class="container">
+    <p>Today, the most popular and well-respected Web browsers are free. Take Firefox, for example — it's easy to download and free for anyone to use. It just takes a few minutes to install: <a href="https://mozilla.org/firefox">www.mozilla.org/firefox</a></p>
+    <p><img src="//stuff.webmaker.org/editorial-assets/firefoxdownloadpage.png" class="responsive-img"></p>
+  </div>
+
+  <div class="container">
+    <h2>What's a browser?</h2>
+    <p>A browser is a piece of software that displays Web pages. Most popular browsers come installed at no additional charge on new computers, smartphones and tablets. You can also download them for free online, which takes only a few minutes.</p>
+    <div class="videoWrapper">
+      <iframe width="853" height="480" src="//www.youtube-nocookie.com/embed/BrXPcaRlBqo" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Why do browsers matter?</h2>
+    <p>The Web browser is the lens through which we look at the virtual world. A browser is software that turns a website's code into the visual images, links, and interactive functionality we see when we visit a website. The browser you choose is responsible for providing you with the tools to manage your online life, and protecting your privacy and security. The way you experience the Internet can be enhanced by a good browser, or limited by a bad one.</p>
+    <p>Here's an example of how Firefox protects you:</p>
+    <p><img src="http://img.oscarmini.com/2012/09/firefox_untrusted_-connection.jpg" class="responsive-img"></p>
+  </div>
+
+  <div class="container">
+    <h2>What is Mozilla?</h2>
+    <p>Mozilla is a global non-profit, and the maker of Firefox. At Mozilla we build products, educate users, and advocate to keep the Internet alive and accessible, so that people worldwide can be informed contributors and creators of the Web. All of the software we build is always free and open source, meaning it's non-proprietary and its code is available to everyone. We will never charge you to use Firefox. Read more about our mission here: <a href="https://www.mozilla.org/mission/">www.mozilla.org/mission</a></p>
+    <div class="videoWrapper">
+      <iframe src="//player.vimeo.com/video/18752973" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Learn more</h2>
+    <p>Educational resources about Firefox and Mozilla:</p>
+    <ul>
+      <li><a href="https://support.mozilla.org/kb/how-download-and-install-firefox-windows">How to install Firefox</a></li>
+      <li><a href="https://www.mozilla.org/mission/">What makes Firefox Unique?</a></li>
+      <li><a href="https://www.mozilla.org/firefox/features/">Firefox features</a></li>
+      <li><a href="https://wiki.mozilla.org/Timeline">History of the Mozilla Project</a></li>
+    </ul>
+    <br>
+    <p>More about the World Wide Web and its history:</p>
+    <ul>
+      <li><a href="https://en.wikipedia.org/wiki/Web_browser">What is a Web Browser?</a></li>
+      <li><a href="http://thenextweb.com/insider/2011/08/06/20-years-ago-today-the-world-wide-web-opened-to-the-public/">20 years ago today, the World Wide Web opened to the public.</a></li>
+      <li><a href="http://www.computerhistory.org/internet_history/">Internet History</a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <p>Remember — most popular and well-respected browsers are free to users. It's free and just takes a few minutes to install Firefox: <a href="https://www.mozilla.org/firefox">www.mozilla.org/firefox</a></p>
+  </div>
+  
+  <footer class="container" style="font-size:0.8em;padding:1em;margin-top:-3em;">
+    <p><strong>PS</strong> -- Did you know you can remix and personalize this web page? Just click the "Remix" button in the upper right corner! </p>
+  </footer>
+
+</body>
+</html>
